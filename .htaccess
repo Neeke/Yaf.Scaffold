@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond $1 !^(index\.php|uploads|resources)
+RewriteRule ^(.*)$ index.php/$1 [L]
