@@ -68,7 +68,6 @@ class Controller extends Yaf_Controller_Abstract
         self::check_login();
 
         $this->db = db_contect::db();
-//        $this->setmeta();
         $this->check    = rest_Check::instance();
         $this->quantity = rest_Quantity::instance();
         $this->rest     = rest_Server::instance();
@@ -145,29 +144,6 @@ class Controller extends Yaf_Controller_Abstract
     {
         $config_ = array_merge($config, $this->userinfo);
         $this->set('config', $config_);
-    }
-
-    /**
-     * 取得meta值
-     */
-    private function getmeta()
-    {
-        $this->db->cache_on(5000);
-        $query = 'select * from yaf_config';
-        $a     = $this->db->getRow($query);
-        $this->db->cache_off();
-        $this->meta = $a;
-    }
-
-    /**
-     * 设置meta值
-     */
-    private function setmeta()
-    {
-        self::getmeta();
-        $this->set('title', $this->meta['title']);
-        $this->set('proname', $this->meta['proname']);
-        $this->set('webroot', $this->meta['webroot']);
     }
 
     function __destruct()

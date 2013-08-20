@@ -10,9 +10,8 @@ class RouterWrightPlugin extends Yaf_Plugin_Abstract
 {
     private $router_wright = array(
         'Index_Login_index',
+        'Index_Login_sign',
         'Index_Register_index',
-        'Api_User_login',
-        'Api_User_reg'
     );
 
     private function check_router($request)
