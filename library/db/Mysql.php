@@ -21,6 +21,7 @@ class db_Mysql
     private $_cache_time = 60;
     private $_cache_if_have = FALSE;
     private $_cache_key = FALSE;
+    private static $_database_name = '';
 
     private function __construct($dbhost, $dbport, $username, $password, $dbname, $dbcharset, $cachesys, $cachetype, $cachehost, $cacheport)
     {
@@ -64,6 +65,8 @@ class db_Mysql
         $_cache_type   = $cache_config->type;
         $_cache_host   = $cache_config->host;
         $_cache_port   = $cache_config->port;
+
+        self::$_database_name = $_db_name;
 
         $idx = md5($_db_host . $_db_name . $_cache_host . $_cache_port);
 
@@ -164,6 +167,19 @@ class db_Mysql
     function joinQuery($sql, $values = array())
     {
 
+    }
+
+    /**
+     * 取得表名列表
+     * @return array|bool|string
+     */
+    function getTablesLists()
+    {
+        $dataBaseName = self::$_database_name;
+        $sql = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '{$dataBaseName}'";
+
+        $this->cache_on(1800);
+        return $this->getAll($sql);
     }
 
     /**

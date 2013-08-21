@@ -10,8 +10,12 @@ class DatatableController extends Controller {
         parent::init();
     }
 
+    /**
+     * 数据库字典
+     */
     public function dicAction()
     {
-
+        $dataDics = models_datadic::getInstance()->getDataDics();
+        $this->set('dataDics',$dataDics);
     }
 }
