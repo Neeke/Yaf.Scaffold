@@ -45,7 +45,7 @@ class models_datadic extends Models
      * @param $table
      * @return array|bool|string
      */
-    private function getColumnsByTable($table)
+    public function getColumnsByTable($table)
     {
         $result = array();
 

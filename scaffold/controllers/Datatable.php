@@ -3,7 +3,7 @@
  * @author ciogao@gmail.com
  * Date: 13-8-21 上午12:49
  */
-class DatatableController extends Controller {
+class DatatableController extends Scaffold {
 
     public function init()
     {

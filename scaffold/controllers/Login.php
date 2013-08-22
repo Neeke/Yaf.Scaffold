@@ -2,7 +2,7 @@
 /**
  * 首页
  */
-class LoginController extends Controller {
+class LoginController extends Scaffold {
 
 	public function indexAction() {
 

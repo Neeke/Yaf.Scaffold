@@ -4,7 +4,7 @@
  * @author ciogao@gmail.com
  *
  */
-class Controller extends Yaf_Controller_Abstract
+class Scaffold extends Yaf_Controller_Abstract
 {
     /**
      * @var Models
