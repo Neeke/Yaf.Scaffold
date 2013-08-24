@@ -11,7 +11,10 @@
 <div class="row-fluid sortable">
 <div class="box span12">
 <div class="box-header well" data-original-title>
-    <h2><i class="icon-user"></i> <?php echo $tableName;?></h2>
+    <h2>
+        <i class="icon-user"></i> <?php echo $tableName;?>
+        <a class="btn btn-success btn-new" href="javascript:;"><i class="icon icon-folder-open icon-white"></i> New</a>
+    </h2>
     <div class="box-icon">
         <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
         <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -28,7 +31,7 @@
     <?php
     foreach($columns as $column_name => $info){
     ?>
-        <th><?php echo $column_name;?></th>
+        <th data-rel="tooltip" data-original-title="<?php echo $info['COLUMN_COMMENT'];?>"><?php echo $column_name;?></th>
     <?php }?>
     <th>Actions</th>
 </tr>
@@ -39,7 +42,7 @@
     <?php foreach($columns as $column_name => $_info){?>
         <td><?php echo $info[$column_name];?></td>
     <?php }?>
-        <td class="center" data-primary-value="<?php echo $info['user_id'];?>">
+        <td class="center" data-primary-value="<?php echo $info[$primary];?>">
             <a class="btn btn-success btn-view" href="javascript:;"><i class="icon-zoom-in icon-white"></i>View</a>
             <a class="btn btn-info btn-edit" href="javascript:;"><i class="icon-edit icon-white"></i>Edit</a>
             <a class="btn btn-danger btn-remove" href="javascript:;"><i class="icon-trash icon-white"></i>Delete</a>

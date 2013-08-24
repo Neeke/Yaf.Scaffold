@@ -8,6 +8,7 @@ class Scaffold extends Yaf_Controller_Abstract
 {
     protected $table_name = '';
     protected $primary = '';
+    protected $columns = array();
     protected $Scaffold = FALSE;
 
     /**
@@ -69,7 +70,7 @@ class Scaffold extends Yaf_Controller_Abstract
 
         self::check_login();
 
-        $this->db = db_contect::db();
+        $this->db       = db_contect::db();
         $this->check    = rest_Check::instance();
         $this->quantity = rest_Quantity::instance();
         $this->rest     = rest_Server::instance();
@@ -87,12 +88,12 @@ class Scaffold extends Yaf_Controller_Abstract
      */
     protected function ScaffoldRoute()
     {
-        if (!$this->Scaffold) return ;
+        if (!$this->Scaffold) return;
 
         Yaf_Dispatcher::getInstance()->disableView();
 
         $action = $this->getRequest()->getActionName();
-        switch ($action){
+        switch ($action) {
             case 'scaffold':
                 $this->ScaffoldIndex();
                 break;
@@ -113,16 +114,30 @@ class Scaffold extends Yaf_Controller_Abstract
     /**
      * Scaffold 默认list
      */
-    protected function ScaffoldIndex(){
+    protected function ScaffoldIndex()
+    {
         $columns = models_datadic::getInstance()->getColumnsByTable($this->table_name);
 
-        $data = $this->db->getAll("select * from {$this->table_name}");
+        if (!is_array($this->columns) || count($this->columns) < 1){
+            $columnsShow = $columns;
+        }else{
+            $columnsShow[$this->primary] = $columns[$this->primary];
+            foreach ($this->columns as $value) {
+                if (array_key_exists($value, $columns)) {
+                    $columnsShow[$value] = $columns[$value];
+                }
+            }
+        }
+        $select = implode(',',array_keys($columnsShow));
 
-        $this->set('tableName',$this->table_name);
-        $this->set('columns',$columns);
-        $this->set('data',$data);
+        $data = $this->db->getAll("select {$select} from {$this->table_name}");
 
-        $this->getView()->display(VIEW_PATH.'/scaffoldView/scaffold.phtml');
+        $this->set('tableName', $this->table_name);
+        $this->set('primary',$this->primary);
+        $this->set('columns', $columnsShow);
+        $this->set('data', $data);
+
+        $this->getView()->display(VIEW_PATH . '/scaffoldView/scaffold.phtml');
     }
 
     /**
@@ -136,7 +151,7 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->rest->paramsMustMap = array('primary');
         $this->rest->paramsMustValid($parms);
 
-        $result = $this->db->getRow("select * from {$this->table_name} where {$this->primary} = ?",array($parms['primary']));
+        $result = $this->db->getRow("select * from {$this->table_name} where {$this->primary} = ?", array($parms['primary']));
         if ($result) $this->rest->success($result);
         $this->rest->error();
     }
@@ -146,7 +161,27 @@ class Scaffold extends Yaf_Controller_Abstract
      */
     protected function ScaffoldModify()
     {
+        $this->rest->method('POST');
+        $parms = $this->allParams();
 
+        $this->rest->paramsMustMap = array($this->primary);
+        $this->rest->paramsMustValid($parms);
+
+        $primary_value = $parms[$this->primary];
+        unset($parms[$this->primary]);
+
+        if ((int)$primary_value > 0) {
+            $where = array(
+                $this->primary => $primary_value,
+            );
+
+            $result = $this->db->update($this->table_name, $parms, $where);
+        } else {
+            $result = $this->db->insert($this->table_name, $parms);
+        }
+
+        if ($result) $this->rest->success($result);
+        $this->rest->error();
     }
 
     /**
@@ -160,7 +195,7 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->rest->paramsMustMap = array('primary');
         $this->rest->paramsMustValid($parms);
 
-        $result = $this->db->delete($this->table_name,array($this->primary => $parms['primary']));
+        $result = $this->db->delete($this->table_name, array($this->primary => $parms['primary']));
         if ($result) $this->rest->success();
         $this->rest->error();
     }

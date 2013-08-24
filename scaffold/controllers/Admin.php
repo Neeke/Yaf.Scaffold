@@ -10,6 +10,7 @@ class AdminController extends Scaffold
     {
         $this->table_name = 'yaf_admin';
         $this->primary    = 'user_id';
+        $this->columns    = array('user_name','remark');
         $this->Scaffold   = TRUE;
         parent::init();
     }

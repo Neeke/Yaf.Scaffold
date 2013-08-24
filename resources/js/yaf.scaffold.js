@@ -6,6 +6,12 @@ $('.btn-view').click(function(e){
     $('#scaffoldEdit').modal('show');
 });
 
+$('.btn-new').click(function(e){
+    e.preventDefault();
+    $('#scaffoldEdit').modal('show');
+    $("input[type=reset]").trigger("click");
+});
+
 $('.btn-edit').click(function(e){
     e.preventDefault();
     $('#scaffoldEdit').modal('show');
@@ -16,12 +22,12 @@ $('.btn-edit').click(function(e){
         if (result.code == 1000){
             $.each(result.data,function(key,value){
                 $('input[name="'+ key +'"]').val(value);
+                $('textarea[name="'+ key +'"]').html(value);
             });
         }else{
             alert(result.msg);
         }
     });
-
 });
 
 $('.btn-remove').click(function(e){
@@ -43,4 +49,13 @@ $('.btn-modify').click(function(e){
     e.preventDefault();
     var api_modify = $("#api-modify").attr('data-api');
 
+    $.ajax({
+        type: "POST",
+        url: api_modify,
+        data: $("#form-modify").serialize(),
+        success: function(result){
+            alert(result.msg);
+            $('#scaffoldEdit').modal('hide');
+        }
+    });
 });
