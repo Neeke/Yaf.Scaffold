@@ -1,11 +1,15 @@
 <?php
 /**
- * Controller base
+ * Scaffold Controller base
  * @author ciogao@gmail.com
  *
  */
 class Scaffold extends Yaf_Controller_Abstract
 {
+    protected $table_name = '';
+    protected $primary = '';
+    protected $Scaffold = FALSE;
+
     /**
      * @var Models
      */
@@ -19,7 +23,6 @@ class Scaffold extends Yaf_Controller_Abstract
     protected $appconfig = array();
     protected $userinfo = array();
     protected $user_id = 0;
-    protected $modules = array();
 
     /**
      * @var rest_Server
@@ -63,7 +66,6 @@ class Scaffold extends Yaf_Controller_Abstract
     {
         $this->userinfo = models_user::getInstance()->getUserInfo();
         $this->user_id  = (is_array($this->userinfo) && array_key_exists('user_id', $this->userinfo)) ? $this->userinfo['user_id'] : 0;
-        $this->modules  = explode(',', Yaf_Registry::get("config")->get('yaf')->get('modules'));
 
         self::check_login();
 
@@ -76,6 +78,91 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->mkData   = rest_Mkdata::instance();
 
         $this->setConfig();
+
+        $this->ScaffoldRoute();
+    }
+
+    /**
+     *Scaffold action识配
+     */
+    protected function ScaffoldRoute()
+    {
+        if (!$this->Scaffold) return ;
+
+        Yaf_Dispatcher::getInstance()->disableView();
+
+        $action = $this->getRequest()->getActionName();
+        switch ($action){
+            case 'scaffold':
+                $this->ScaffoldIndex();
+                break;
+            case 'getrow':
+                $this->ScaffoldGetrow();
+                break;
+            case 'modify':
+                $this->ScaffoldModify();
+                break;
+            case 'remove':
+                $this->ScaffoldRemove();
+                break;
+            default:
+                $this->ScaffoldIndex();
+        }
+    }
+
+    /**
+     * Scaffold 默认list
+     */
+    protected function ScaffoldIndex(){
+        $columns = models_datadic::getInstance()->getColumnsByTable($this->table_name);
+
+        $data = $this->db->getAll("select * from {$this->table_name}");
+
+        $this->set('tableName',$this->table_name);
+        $this->set('columns',$columns);
+        $this->set('data',$data);
+
+        $this->getView()->display(VIEW_PATH.'/scaffoldView/scaffold.phtml');
+    }
+
+    /**
+     * Scaffold 取得单条信息
+     */
+    protected function ScaffoldGetrow()
+    {
+        $this->rest->method('GET');
+        $parms = $this->allParams();
+
+        $this->rest->paramsMustMap = array('primary');
+        $this->rest->paramsMustValid($parms);
+
+        $result = $this->db->getRow("select * from {$this->table_name} where {$this->primary} = ?",array($parms['primary']));
+        if ($result) $this->rest->success($result);
+        $this->rest->error();
+    }
+
+    /**
+     * Scaffold insert||modify
+     */
+    protected function ScaffoldModify()
+    {
+
+    }
+
+    /**
+     * Scaffold delete
+     */
+    protected function ScaffoldRemove()
+    {
+        $this->rest->method('POST');
+        $parms = $this->getRequest()->getPost();
+
+        $this->rest->paramsMustMap = array('primary');
+        $this->rest->paramsMustValid($parms);
+
+        $result = $this->db->delete($this->table_name,array($this->primary => $parms['primary']));
+        if ($result) $this->rest->success();
+        $this->rest->error();
     }
 
     /**

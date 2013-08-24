@@ -19,6 +19,9 @@
     </div>
 </div>
 <div class="box-content">
+    <span id="api-getrow" data-api="/admin/getrow"></span>
+    <span id="api-modify" data-api="/admin/modify"></span>
+    <span id="api-remove" data-api="/admin/remove"></span>
 <table class="table table-striped table-bordered bootstrap-datatable datatable">
 <thead>
 <tr>
@@ -31,28 +34,15 @@
 </tr>
 </thead>
 <tbody>
-<?php
-foreach ($data as $info) {
-?>
+<?php foreach ($data as $info) {?>
     <tr>
-    <?php
-    foreach($columns as $column_name => $_info){
-    ?>
+    <?php foreach($columns as $column_name => $_info){?>
         <td><?php echo $info[$column_name];?></td>
     <?php }?>
-        <td class="center">
-            <a class="btn btn-success" href="#">
-                <i class="icon-zoom-in icon-white"></i>
-                View
-            </a>
-            <a class="btn btn-info" href="#">
-                <i class="icon-edit icon-white"></i>
-                Edit
-            </a>
-            <a class="btn btn-danger" href="#">
-                <i class="icon-trash icon-white"></i>
-                Delete
-            </a>
+        <td class="center" data-primary-value="<?php echo $info['user_id'];?>">
+            <a class="btn btn-success btn-view" href="javascript:;"><i class="icon-zoom-in icon-white"></i>View</a>
+            <a class="btn btn-info btn-edit" href="javascript:;"><i class="icon-edit icon-white"></i>Edit</a>
+            <a class="btn btn-danger btn-remove" href="javascript:;"><i class="icon-trash icon-white"></i>Delete</a>
         </td>
     </tr>
 <?php }?>
@@ -63,5 +53,8 @@ foreach ($data as $info) {
 
 </div><!--/row-->
 </div>
+
+<?php require_once VIEW_PATH.'/scaffoldView/modify.phtml';?>
+
 
 <?php require_once VIEW_PATH.'/common/footer.phtml';?>
