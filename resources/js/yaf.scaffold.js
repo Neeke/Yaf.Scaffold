@@ -9,7 +9,7 @@ $('.btn-view').click(function(e){
 $('.btn-new').click(function(e){
     e.preventDefault();
     $('#scaffoldEdit').modal('show');
-    $("input[type=reset]").trigger("click");
+    $("#form-modify").resetForm();
 });
 
 $('.btn-edit').click(function(e){
@@ -22,7 +22,7 @@ $('.btn-edit').click(function(e){
         if (result.code == 1000){
             $.each(result.data,function(key,value){
                 $('input[name="'+ key +'"]').val(value);
-                $('textarea[name="'+ key +'"]').html(value);
+                $('textarea[name="'+ key +'"]').val(value);
             });
         }else{
             alert(result.msg);
