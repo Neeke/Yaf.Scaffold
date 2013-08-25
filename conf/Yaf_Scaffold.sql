@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2013-08-25 01:01:12
+Date: 2013-08-25 23:40:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,7 +25,7 @@ CREATE TABLE `yaf_admin` (
   `user_pwd` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '用户密码',
   `remark` text COLLATE utf8_unicode_ci COMMENT '备注信息',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=165 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of yaf_admin
@@ -190,3 +190,22 @@ INSERT INTO `yaf_admin` VALUES ('160', '1', 'e10adc3949ba59abbe56e057f20f883e', 
 INSERT INTO `yaf_admin` VALUES ('161', '1', 'e10adc3949ba59abbe56e057f20f883e', null);
 INSERT INTO `yaf_admin` VALUES ('162', '1', 'e10adc3949ba59abbe56e057f20f883e', null);
 INSERT INTO `yaf_admin` VALUES ('163', '1', 'e10adc3949ba59abbe56e057f20f883e', null);
+
+-- ----------------------------
+-- Table structure for `yaf_scaffold_config`
+-- ----------------------------
+DROP TABLE IF EXISTS `yaf_scaffold_config`;
+CREATE TABLE `yaf_scaffold_config` (
+  `cid` int(11) NOT NULL AUTO_INCREMENT,
+  `model_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '模块名',
+  `remark` text COLLATE utf8_unicode_ci COMMENT '备注',
+  `table_primary` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '主键名',
+  `table_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '表名',
+  `columns` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '字段名',
+  PRIMARY KEY (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of yaf_scaffold_config
+-- ----------------------------
+INSERT INTO `yaf_scaffold_config` VALUES ('1', 'Admin/Scaffold', '用户模块脚手架', 'user_id', 'yaf_admin', 'user_name,remark');

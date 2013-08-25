@@ -90,6 +90,8 @@ class Scaffold extends Yaf_Controller_Abstract
     {
         if (!$this->Scaffold) return;
 
+        $this->set('controller',$this->getRequest()->getControllerName());
+
         Yaf_Dispatcher::getInstance()->disableView();
 
         $action = $this->getRequest()->getActionName();
@@ -164,7 +166,7 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->rest->method('POST');
         $parms = $this->allParams();
 
-        $this->rest->paramsMustMap = array($this->primary);
+        $this->rest->paramsMustMap = $this->columns;
         $this->rest->paramsMustValid($parms);
 
         $primary_value = $parms[$this->primary];
