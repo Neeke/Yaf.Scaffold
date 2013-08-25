@@ -157,4 +157,16 @@ class helper_common{
         }
         return $result;
     }
+
+    /**
+     * 获取avatar图标
+     * @param string $email
+     * @param int $size
+     * @return string
+     */
+    public static function avatar($email, $size = 32){
+        $str = 'http://www.gravatar.com/avatar/'.md5($email).'.png';
+        $str .= '?s='.$size;
+        return $str;
+    }
 }
