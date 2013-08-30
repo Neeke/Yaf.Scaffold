@@ -79,6 +79,7 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->mkData   = rest_Mkdata::instance();
 
         $this->setConfig();
+        $this->setScaffoldConfig();
 
         $this->ScaffoldRoute();
     }
@@ -200,6 +201,14 @@ class Scaffold extends Yaf_Controller_Abstract
         $result = $this->db->delete($this->table_name, array($this->primary => $parms['primary']));
         if ($result) $this->rest->success();
         $this->rest->error();
+    }
+
+    /**
+     * 获取并设置所有scaffold config
+     */
+    protected function setScaffoldConfig()
+    {
+        $this->set('scaffold_configs',models_scaffoldConfig::getInstance()->getAllConfig());
     }
 
     /**

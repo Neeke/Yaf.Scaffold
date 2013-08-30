@@ -208,4 +208,4 @@ CREATE TABLE `yaf_scaffold_config` (
 -- ----------------------------
 -- Records of yaf_scaffold_config
 -- ----------------------------
-INSERT INTO `yaf_scaffold_config` VALUES ('1', 'Admin/Scaffold', '用户模块脚手架', 'user_id', 'yaf_admin', 'user_name,remark');
+INSERT INTO `yaf_scaffold_config` VALUES ('1', 'Admin_Scaffold', '用户模块脚手架', 'user_id', 'yaf_admin', 'user_name,remark');
