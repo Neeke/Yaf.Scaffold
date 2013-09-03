@@ -12,7 +12,7 @@
                     </label>
                     <div class="controls">
                         <?php if ($column_name == $primary){?>
-                        <input class="input-xlarge disabled" id="focusedInput" type="text" name="<?php echo $column_name;?>" value="" disabled>
+                        <input class="input-xlarge disabled" id="focusedInput" type="text" name="<?php echo $column_name;?>" value="">
                         <?php }else{?>
                             <?php if ($info['COLUMN_TYPE'] == 'text'){?>
                                 <textarea class="input-xlarge" id="textarea2" name="<?php echo $column_name;?>" rows="3"></textarea>

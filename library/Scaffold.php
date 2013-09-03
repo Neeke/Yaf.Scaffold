@@ -90,13 +90,17 @@ class Scaffold extends Yaf_Controller_Abstract
     protected function ScaffoldRoute()
     {
         if (!$this->Scaffold) return;
+        $this->set('controller', $this->getRequest()->getControllerName());
 
-        $this->set('controller',$this->getRequest()->getControllerName());
+        $this->allParams();
 
         Yaf_Dispatcher::getInstance()->disableView();
 
-        $action = $this->getRequest()->getActionName();
+        $action = $this->getRequest()->getParam('action');
         switch ($action) {
+            case 'scaffoldajax':
+                $this->ScaffoldAjax();
+                break;
             case 'scaffold':
                 $this->ScaffoldIndex();
                 break;
@@ -121,9 +125,9 @@ class Scaffold extends Yaf_Controller_Abstract
     {
         $columns = models_datadic::getInstance()->getColumnsByTable($this->table_name);
 
-        if (!is_array($this->columns) || count($this->columns) < 1){
+        if (!is_array($this->columns) || count($this->columns) < 1) {
             $columnsShow = $columns;
-        }else{
+        } else {
             $columnsShow[$this->primary] = $columns[$this->primary];
             foreach ($this->columns as $value) {
                 if (array_key_exists($value, $columns)) {
@@ -131,16 +135,76 @@ class Scaffold extends Yaf_Controller_Abstract
                 }
             }
         }
-        $select = implode(',',array_keys($columnsShow));
-
-        $data = $this->db->getAll("select {$select} from {$this->table_name}");
 
         $this->set('tableName', $this->table_name);
-        $this->set('primary',$this->primary);
+        $this->set('primary', $this->primary);
         $this->set('columns', $columnsShow);
-        $this->set('data', $data);
+
+        $model_name = $this->getRequest()->getParam('model');
+        $this->set('api', array(
+            'getrow' => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/getrow'),
+            'modify' => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/modify'),
+            'remove' => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/remove'),
+        ));
 
         $this->getView()->display(VIEW_PATH . '/scaffoldView/scaffold.phtml');
+    }
+
+    /**
+     * Scaffold ajaxData
+     */
+    protected function ScaffoldAjax()
+    {
+        $columns = models_datadic::getInstance()->getColumnsByTable($this->table_name);
+
+        if (!is_array($this->columns) || count($this->columns) < 1) {
+            $columnsShow = $columns;
+        } else {
+            $columnsShow[$this->primary] = $columns[$this->primary];
+            foreach ($this->columns as $value) {
+                if (array_key_exists($value, $columns)) {
+                    $columnsShow[$value] = $columns[$value];
+                }
+            }
+        }
+
+        $scaffoldModel = models_scaffold::getInstance($this->table_name,$this->primary);
+
+        $total_rows   = $scaffoldModel->count();
+        $per_page     = $this->allParams['perPage'] ? : contast_scaffold::PAGE_PER_DEFAULT;
+        $current_page = $this->allParams['currentPage'] ? : contast_scaffold::PAGE_CURRENT_DEFAULT;
+
+        $sort   = $this->allParams["sort"] ? : array(array($this->primary, "desc"));
+        $filter = $this->allParams["filter"] ? : array('');
+
+        $result = array(
+            "totalRows"   => $total_rows,
+            "perPage"     => $per_page,
+            "sort"        => $sort,
+            "filter"      => $filter,
+            "currentPage" => $current_page,
+            "data"        => array(),
+            "posted"      => $this->allParams
+        );
+
+        $start = ($current_page - 1) * $per_page;
+        $limit = $per_page;
+
+        $select = implode(',', array_keys($columnsShow));
+        foreach($sort as $val){
+            $order[$val[0]] = $val[1];
+        }
+        $data = $scaffoldModel->getAll($select,$filter,$order,$start,$limit);
+
+        foreach ($data as $value) {
+            foreach ($columnsShow as $key => $v) {
+                $data_[$key] = $value[$key];
+            }
+
+            $result["data"][] = $data_;
+        }
+
+        $this->rest->success($result);
     }
 
     /**
@@ -171,7 +235,7 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->rest->paramsMustValid($parms);
 
         $primary_value = $parms[$this->primary];
-        unset($parms[$this->primary]);
+        unset($parms[$this->primary],$parms['model'],$parms['action']);
 
         if ((int)$primary_value > 0) {
             $where = array(
@@ -208,7 +272,7 @@ class Scaffold extends Yaf_Controller_Abstract
      */
     protected function setScaffoldConfig()
     {
-        $this->set('scaffold_configs',models_scaffoldConfig::getInstance()->getAllConfig());
+        $this->set('scaffold_configs', models_scaffoldConfig::getInstance()->getAllConfig());
     }
 
     /**

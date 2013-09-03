@@ -51,7 +51,7 @@ class Models
      * @param $where
      * @return array
      */
-    public function count($where)
+    public function count($where = array())
     {
         $this->db->cache_on(10);
         $_where = self::where($where);
