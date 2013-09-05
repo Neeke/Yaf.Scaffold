@@ -1370,6 +1370,7 @@ final class Yaf_View_Simple implements Yaf_View_Interface
 
     public function get($name = NULL)
     {
+        return ;
     }
 
     public function assign($name, $value = NULL)

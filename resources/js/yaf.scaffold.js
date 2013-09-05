@@ -1,6 +1,32 @@
 /**
  * @author ciogao@gmail.com
  */
+var primary = $CONFIG.scaffold.primary;
+var columns = $CONFIG.scaffold.columns;
+var tmp_action = {
+    title: "Action", sortable: false, callback: function () {
+        return "<a class=\"btn btn-success btn-view\" href=\"javascript:;\"><i class=\"icon-zoom-in icon-white\"></i>View</a> " +
+            "<a class=\"btn btn-info btn-edit\" href=\"javascript:;\"><i class=\"icon-edit icon-white\"></i>Edit</a> " +
+            "<a class=\"btn btn-danger btn-remove\" href=\"javascript:;\"><i class=\"icon-trash icon-white\"></i>Delete</a>"
+    }
+};
+
+columns['Action'] = tmp_action;
+
+$("#table-scaffold").datatable({
+    title: '',
+    perPage: 10,
+    url: $CONFIG.scaffold.api.scaffoldajax,
+    allowSaveColumns: true,
+    showPagination: true,
+    showFilter: true,
+    filterModal: $("#table-scaffold-filter"),
+    rowCallback: function($row,rowdata){
+        return $row.attr('data-primary-value',rowdata[primary]);
+    },
+    columns: columns
+});
+
 $('.btn-view').click(function (e) {
     e.preventDefault();
     $('#scaffoldEdit').modal('show');
@@ -15,7 +41,7 @@ $('.btn-new').click(function (e) {
 $('.btn-edit').live('click', function (e) {
     e.preventDefault();
     $('#scaffoldEdit').modal('show');
-    var api_get = $("#api-getrow").attr('data-api');
+    var api_get = $CONFIG.scaffold.api.getrow;
     var primary_value = $(this).closest('tr').attr('data-primary-value');
 
     $.get(api_get, {primary: primary_value}, function (result) {
@@ -33,7 +59,7 @@ $('.btn-edit').live('click', function (e) {
 $('.btn-remove').live('click', function (e) {
     e.preventDefault();
     var this_btn = $(this);
-    var api = $("#api-remove").attr('data-api');
+    var api = $CONFIG.scaffold.api.remove;
     var primary_value = this_btn.closest('tr').attr('data-primary-value');
     $.post(api, {primary: primary_value}, function (result) {
         if (result.code && result.code == 1000) {
@@ -46,7 +72,7 @@ $('.btn-remove').live('click', function (e) {
 
 $('.btn-modify').click(function (e) {
     e.preventDefault();
-    var api_modify = $("#api-modify").attr('data-api');
+    var api_modify = $CONFIG.scaffold.api.modify;
 
     $.ajax({
         type: "POST",
@@ -57,38 +83,6 @@ $('.btn-modify').click(function (e) {
             $('#scaffoldEdit').modal('hide');
         }
     });
-});
-
-
-$("#table-scaffold").datatable({
-    title: '',
-    perPage: 10,
-    url: '/scaffold/c/model/Admin_Scaffold/action/scaffoldajax',
-    allowSaveColumns: true,
-    showPagination: true,
-    showFilter: true,
-    filterModal: $("#table-scaffold-filter"),
-    rowCallback: function($row,rowdata){
-        return $row.attr('data-primary-value',rowdata.user_id);
-    },
-    columns: [
-        {
-            title: "user_id", comment: "ID序号", sortable: true, field: "user_id", filter: true
-        }
-        ,{
-            title: "user_name", comment: "用户名", sortable: true, field: "user_name", filter: true
-        }
-        ,{
-            title: "remark", comment: "备注", sortable: true, field: "remark"
-        }
-        ,{
-            title: "Action", sortable: false, callback: function () {
-            return "<a class=\"btn btn-success btn-view\" href=\"javascript:;\"><i class=\"icon-zoom-in icon-white\"></i>View</a> " +
-                "<a class=\"btn btn-info btn-edit\" href=\"javascript:;\"><i class=\"icon-edit icon-white\"></i>Edit</a> " +
-                "<a class=\"btn btn-danger btn-remove\" href=\"javascript:;\"><i class=\"icon-trash icon-white\"></i>Delete</a>"
-        }
-        }
-    ]
 });
 
 $('.btn-close').click(function (e) {

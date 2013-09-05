@@ -46,3 +46,11 @@
 </head>
 
 <body>
+
+<script>
+    var $CONFIG = <?php if (isset($config) && is_array($config) && count($config) > 0){
+        echo json_encode($config);
+        }else{
+            echo '{}';
+        } ?>
+</script>

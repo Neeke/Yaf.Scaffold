@@ -63,6 +63,8 @@ class Scaffold extends Yaf_Controller_Abstract
     protected $start = 0;
     protected $limit = 0;
 
+    protected $scaffoldC = FALSE;
+
     function init()
     {
         $this->userinfo = models_user::getInstance()->getUserInfo();
@@ -78,10 +80,10 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->session  = Yaf_Session::getInstance();
         $this->mkData   = rest_Mkdata::instance();
 
-        $this->setConfig();
         $this->setScaffoldConfig();
-
         $this->ScaffoldRoute();
+
+        $this->setConfig();
     }
 
     /**
@@ -95,8 +97,12 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->allParams();
 
         Yaf_Dispatcher::getInstance()->disableView();
+        $action = $this->getRequest()->getActionName();
+        if ($action == 'c') {
+            $this->scaffoldC = TRUE;
+            $action          = $this->getRequest()->getParam('action');
+        }
 
-        $action = $this->getRequest()->getParam('action');
         switch ($action) {
             case 'scaffoldajax':
                 $this->ScaffoldAjax();
@@ -137,17 +143,44 @@ class Scaffold extends Yaf_Controller_Abstract
         }
 
         $this->set('tableName', $this->table_name);
-        $this->set('primary', $this->primary);
+
         $this->set('columns', $columnsShow);
 
-        $model_name = $this->getRequest()->getParam('model');
-        $this->set('api', array(
-            'getrow' => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/getrow'),
-            'modify' => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/modify'),
-            'remove' => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/remove'),
-        ));
+        foreach ($columnsShow as $key => $val) {
+            $column                                = array(
+                'title'   => $key,
+                'comment' => $val['COLUMN_COMMENT'],
+                'type'    => $val['COLUMN_TYPE'],
+                'sortable' => true,
+                'field' => $key,
+                'filter' => $key == $this->primary ? true : false,
+            );
+            $scaffold['scaffold']['columns'][$key] = $column;
+        }
 
-        $this->getView()->display(VIEW_PATH . '/scaffoldView/scaffold.phtml');
+        $scaffold['scaffold']['primary'] = $this->primary;
+
+        if ($this->scaffoldC) {
+            $model_name                  = $this->getRequest()->getParam('model');
+            $scaffold['scaffold']['api'] = array(
+                'scaffoldajax' => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/scaffoldajax'),
+                'getrow'       => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/getrow'),
+                'modify'       => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/modify'),
+                'remove'       => helper_common::site_url('Scaffold/c/model/' . $model_name . '/action/remove'),
+            );
+        } else {
+            $model_name                  = $this->getRequest()->getControllerName();
+            $scaffold['scaffold']['api'] = array(
+                'scaffoldajax' => helper_common::site_url($model_name . '/scaffoldajax'),
+                'getrow'       => helper_common::site_url($model_name . '/getrow'),
+                'modify'       => helper_common::site_url($model_name . '/modify'),
+                'remove'       => helper_common::site_url($model_name . '/remove'),
+            );
+        }
+
+        $this->setConfig($scaffold);
+        $config = $this->get('config');
+        $this->getView()->display(VIEW_PATH . '/scaffoldView/scaffold.phtml', $config);
     }
 
     /**
@@ -168,7 +201,7 @@ class Scaffold extends Yaf_Controller_Abstract
             }
         }
 
-        $scaffoldModel = models_scaffold::getInstance($this->table_name,$this->primary);
+        $scaffoldModel = models_scaffold::getInstance($this->table_name, $this->primary);
 
         $total_rows   = $scaffoldModel->count();
         $per_page     = $this->allParams['perPage'] ? : contast_scaffold::PAGE_PER_DEFAULT;
@@ -191,10 +224,10 @@ class Scaffold extends Yaf_Controller_Abstract
         $limit = $per_page;
 
         $select = implode(',', array_keys($columnsShow));
-        foreach($sort as $val){
+        foreach ($sort as $val) {
             $order[$val[0]] = $val[1];
         }
-        $data = $scaffoldModel->getAll($select,$filter,$order,$start,$limit);
+        $data = $scaffoldModel->getAll($select, $filter, $order, $start, $limit);
 
         foreach ($data as $value) {
             foreach ($columnsShow as $key => $v) {
@@ -235,7 +268,7 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->rest->paramsMustValid($parms);
 
         $primary_value = $parms[$this->primary];
-        unset($parms[$this->primary],$parms['model'],$parms['action']);
+        unset($parms[$this->primary], $parms['model'], $parms['action']);
 
         if ((int)$primary_value > 0) {
             $where = array(
@@ -269,6 +302,7 @@ class Scaffold extends Yaf_Controller_Abstract
 
     /**
      * 获取并设置所有scaffold config
+     * leftMenu
      */
     protected function setScaffoldConfig()
     {
@@ -334,13 +368,30 @@ class Scaffold extends Yaf_Controller_Abstract
     }
 
     /**
+     * 获取模板变量
+     * @param $key
+     * @return mixed
+     */
+    protected function get($key)
+    {
+        return $this->getView()->get($key);
+    }
+
+    /**
      * 设置页面config值
      * @param $config
      */
     protected function setConfig($config = array())
     {
-        $config_ = array_merge($config, $this->userinfo);
-        $this->set('config', $config_);
+        $config_    = array_merge($config, $this->userinfo);
+        $config_get = $this->get('config');
+        if ($config_get) {
+            $config_set = array_merge($config_get, $config_);
+        } else {
+            $config_set = $config_;
+        }
+
+        $this->set('config', $config_set);
     }
 
     function __destruct()
