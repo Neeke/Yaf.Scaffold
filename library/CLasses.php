@@ -21,8 +21,13 @@ final class Yaf_Application
     {
     }
 
-    public function __set(){}
-    public function __get(){}
+    public function __set()
+    {
+    }
+
+    public function __get()
+    {
+    }
 
     public function run()
     {
@@ -203,7 +208,7 @@ final class Yaf_Dispatcher
     }
 
     /**
-     *@return Yaf_Dispatcher
+     * @return Yaf_Dispatcher
      */
     public static function getInstance()
     {
@@ -1009,69 +1014,69 @@ abstract class Yaf_Controller_Abstract
     protected $_view = NULL;
 
     /* methods */
-    final protected function render($tpl, array $parameters = NULL)
+    protected function render($tpl, array $parameters = NULL)
     {
     }
 
-    final protected function display($tpl, array $parameters = NULL)
+    protected function display($tpl, array $parameters = NULL)
     {
     }
 
     /**
      * @return Yaf_Request_Http
      */
-    final public function getRequest()
+    public function getRequest()
     {
     }
 
-    final public function getResponse()
+    public function getResponse()
     {
     }
 
-    final public function getModuleName()
+    public function getModuleName()
     {
     }
 
     /**
      * @return Yaf_View_Simple
      */
-    final public function getView()
+    public function getView()
     {
     }
 
-    final public function initView(array $options = NULL)
+    public function initView(array $options = NULL)
     {
     }
 
-    final public function setViewpath($view_directory)
+    public function setViewpath($view_directory)
     {
     }
 
-    final public function getViewpath()
+    public function getViewpath()
     {
     }
 
-    final public function forward($module, $controller = NULL, $action = NULL, array $paramters = NULL)
+    public function forward($module, $controller = NULL, $action = NULL, array $paramters = NULL)
     {
     }
 
-    final public function redirect($url)
+    public function redirect($url)
     {
     }
 
-    final public function getInvokeArgs()
+    public function getInvokeArgs()
     {
     }
 
-    final public function getInvokeArg($name)
+    public function getInvokeArg($name)
     {
     }
 
-    final public function __construct()
+    public function __construct()
     {
     }
 
-    final private function __clone()
+    private function __clone()
     {
     }
 }
@@ -1169,19 +1174,19 @@ abstract class Yaf_Config_Abstract
     protected $_readonly = "1";
 
     /* methods */
-    abstract public function get()
+    public function get()
     {
     }
 
-    abstract public function set()
+    public function set()
     {
     }
 
-    abstract public function readonly()
+    public function readonly()
     {
     }
 
-    abstract public function toArray()
+    public function toArray()
     {
     }
 }
@@ -1370,7 +1375,7 @@ final class Yaf_View_Simple implements Yaf_View_Interface
 
     public function get($name = NULL)
     {
-        return ;
+        return;
     }
 
     public function assign($name, $value = NULL)
@@ -1381,8 +1386,8 @@ final class Yaf_View_Simple implements Yaf_View_Interface
     {
     }
 
-    public function eval($tpl_str, $vars = NULL) {
-}
+//    public function eval($tpl_str, $vars = NULL) {
+//}
 
 public
 function display($tpl, $tpl_vars = NULL)
@@ -1409,18 +1414,12 @@ function getScriptPath()
 {
 }
 
-public
-function __get($name = NULL)
-{
+public function __get($name = NULL){}
+
+public function __set($name, $value = NULL){}
 }
 
-public
-function __set($name, $value = NULL)
-{
-}
-}
-
-final class Yaf_Router
+class Yaf_Router
 {
     /* constants */
 
@@ -1458,7 +1457,7 @@ final class Yaf_Router
     }
 }
 
-class Yaf_Route_Static implements Yaf_Router
+class Yaf_Route_Static extends Yaf_Router
 {
     /* constants */
 
@@ -1843,42 +1842,6 @@ class Yaf_Exception_StartupError extends Yaf_Exception
     public function __construct()
     {
     }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
-    {
-    }
 }
 
 class Yaf_Exception_RouterFailed extends Yaf_Exception
@@ -1894,42 +1857,6 @@ class Yaf_Exception_RouterFailed extends Yaf_Exception
 
     /* methods */
     public function __construct()
-    {
-    }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
     {
     }
 }
@@ -1949,42 +1876,6 @@ class Yaf_Exception_DispatchFailed extends Yaf_Exception
     public function __construct()
     {
     }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
-    {
-    }
 }
 
 class Yaf_Exception_LoadFailed extends Yaf_Exception
@@ -2000,42 +1891,6 @@ class Yaf_Exception_LoadFailed extends Yaf_Exception
 
     /* methods */
     public function __construct()
-    {
-    }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
     {
     }
 }
@@ -2055,42 +1910,6 @@ class Yaf_Exception_LoadFailed_Module extends Yaf_Exception_LoadFailed
     public function __construct()
     {
     }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
-    {
-    }
 }
 
 class Yaf_Exception_LoadFailed_Controller extends Yaf_Exception_LoadFailed
@@ -2106,42 +1925,6 @@ class Yaf_Exception_LoadFailed_Controller extends Yaf_Exception_LoadFailed
 
     /* methods */
     public function __construct()
-    {
-    }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
     {
     }
 }
@@ -2161,42 +1944,6 @@ class Yaf_Exception_LoadFailed_Action extends Yaf_Exception_LoadFailed
     public function __construct()
     {
     }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
-    {
-    }
 }
 
 class Yaf_Exception_LoadFailed_View extends Yaf_Exception_LoadFailed
@@ -2214,42 +1961,6 @@ class Yaf_Exception_LoadFailed_View extends Yaf_Exception_LoadFailed
     public function __construct()
     {
     }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
-    {
-    }
 }
 
 class Yaf_Exception_TypeError extends Yaf_Exception
@@ -2265,42 +1976,6 @@ class Yaf_Exception_TypeError extends Yaf_Exception
 
     /* methods */
     public function __construct()
-    {
-    }
-
-    public function getPrevious()
-    {
-    }
-
-    final private function __clone()
-    {
-    }
-
-    final public function getMessage()
-    {
-    }
-
-    final public function getCode()
-    {
-    }
-
-    final public function getFile()
-    {
-    }
-
-    final public function getLine()
-    {
-    }
-
-    final public function getTrace()
-    {
-    }
-
-    final public function getTraceAsString()
-    {
-    }
-
-    public function __toString()
     {
     }
 }
