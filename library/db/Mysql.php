@@ -27,16 +27,10 @@ class db_Mysql
     {
 
         try {
-            if ($cachesys == 'sae') {
-                $dbhost_port = $dbhost . ':' . $dbport;
-            } else {
-                $dbhost_port = $dbhost;
-            }
-            $this->_dbh = new PDO('mysql:dbname=' . $dbname . ';host=' . $dbhost_port, $username, $password, array(PDO::ATTR_PERSISTENT => TRUE));
+            $this->_dbh = new PDO('mysql:host='.$dbhost.';port='.$dbport.';dbname='.$dbname, $username, $password);
             $this->_dbh->query('SET NAMES ' . $dbcharset);
         } catch (PDOException $e) {
-            echo '<pre><b>Connection failed:</b> ' . $e->getMessage();
-            die();
+            exit('<pre><b>Connection failed:</b> ' . $e->getMessage());
         }
 
         $this->_cache = db_Cache::instance($cachehost, $cacheport, $cachetype, $cachesys);
