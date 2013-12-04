@@ -39,15 +39,18 @@ class db_Cache
                     $this->cache = memcache_init();
                 } else {
                     $this->cache = new Memcache();
-                    $a           = $this->cache->connect($cachehost, $cacheport);
-                    if ($a == FALSE) {
-                        echo '<pre><b>memcached Connection failed.  please check the *.ini cache</b></pre>';
-                        die;
+                    $conn = $this->cache->connect($cachehost, $cacheport);
+                    if ($conn == FALSE) {
+                        exit('<pre><b>memcached Connection failed.  please check the *.ini cache</b></pre>');
                     }
                 }
                 break;
             case 'redis':
-
+                $this->cache = new Redis();
+                $conn = $this->cache->connect($cachehost, $cacheport);
+                if($conn == FALSE){
+                    exit('<pre><b>memcached Connection failed.  please check the *.ini cache</b></pre>');
+                }
                 break;
             default:
                 ;
