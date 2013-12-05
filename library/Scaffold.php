@@ -87,7 +87,6 @@ class Scaffold extends Yaf_Controller_Abstract
 
     function init()
     {
-    	echo 111;
         $this->userinfo = models_user::getInstance()->getUserInfo();
         $this->user_id = (is_array($this->userinfo) && array_key_exists('user_id', $this->userinfo)) ? $this->userinfo['user_id'] : 0;
 
