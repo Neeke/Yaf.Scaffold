@@ -41,7 +41,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
      * 路由白名单hook
      * @param Yaf_Dispatcher $dispatcher
      */
-    public function _initRouterWright(Yaf_Dispatcher $dispatcher) {
-        $dispatcher->registerPlugin(new RouterWrightPlugin());
+    public function _initRouterWhite(Yaf_Dispatcher $dispatcher) {
+        $dispatcher->registerPlugin(new RouterWhitePlugin());
     }
 }

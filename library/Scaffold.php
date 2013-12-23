@@ -343,7 +343,7 @@ class Scaffold extends Yaf_Controller_Abstract
         $this->set('userinfo', $this->userinfo);
         $this->set('user_id', $this->user_id);
 
-        if ($this->userinfo == FALSE && !contast_router::getInstance()->getIfrouterWright()) {
+        if ($this->userinfo == FALSE && !contast_router::getInstance()->getIfrouterWhite()) {
             $this->redirect(helper_common::site_url('login'));
         }
     }

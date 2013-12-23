@@ -2,7 +2,7 @@
 /**
  * set \ get 是否在白名单路由
  * 该hook于Bootstrap中init
- * @see RouterWrightPlugin
+ * @see RouterWhitePlugin
  * @author ciogao@gmail.com
  * Date: 13-8-1 上午1:14
  */
@@ -21,23 +21,23 @@ class contast_router
         return self::$_instance;
     }
 
-    private $if_router_wright = FALSE;
+    private $if_router_white = FALSE;
 
     /**
      * 当前router是否在白名单外
      * @return bool
      */
-    public function getIfrouterWright()
+    public function getIfrouterWhite()
     {
-        return $this->if_router_wright;
+        return $this->if_router_white;
     }
 
     /**
      * 设置touter是否在白名单外
      * @param bool $bool
      */
-    public function setIFrouterWright($bool = TRUE)
+    public function setIFrouterWhite($bool = TRUE)
     {
-        $this->if_router_wright = $bool;
+        $this->if_router_white = $bool;
     }
 }
