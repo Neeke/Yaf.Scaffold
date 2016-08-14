@@ -1,4 +1,4 @@
-<?php require_once VIEW_PATH."/common/header.phtml";?>
+<?php require_once VIEW_PATH . "/common/header.phtml"; ?>
 <div class="container-fluid">
     <div class="row-fluid">
 
@@ -15,11 +15,13 @@
                 <div class="alert alert-info">
                     Please login with your Username and Password.
                 </div>
-                <form class="form-horizontal" action="<?php echo helper_common::site_url('login/sign');?>" method="post">
+                <form class="form-horizontal" action="<?php echo helper_common::site_url('login/sign'); ?>"
+                      method="post">
                     <fieldset>
                         <div class="input-prepend" title="Username" data-rel="tooltip">
                             <span class="add-on"><i class="icon-user"></i></span>
-                            <input autofocus class="input-large span10" name="username" id="username" type="text" value=""/>
+                            <input autofocus class="input-large span10" name="username" id="username" type="text"
+                                   value=""/>
                         </div>
                         <div class="clearfix"></div>
 
@@ -50,4 +52,4 @@
 </div>
 <!--/.fluid-container-->
 
-<?php require_once VIEW_PATH.'/common/footer.phtml';?>
+<?php require_once VIEW_PATH . '/common/footer.phtml'; ?>

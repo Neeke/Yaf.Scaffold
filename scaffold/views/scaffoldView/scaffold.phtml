@@ -1,67 +1,71 @@
-<?php require_once VIEW_PATH."/common/header.phtml";?>
+<?php require_once VIEW_PATH . "/common/header.phtml"; ?>
 
-<?php require_once VIEW_PATH."/common/topbar.phtml";?>
-<div class="container-fluid">
-<div class="row-fluid">
-<?php require_once VIEW_PATH."/common/leftMenu.phtml";?>
+<?php require_once VIEW_PATH . "/common/topbar.phtml"; ?>
+    <div class="container-fluid">
+    <div class="row-fluid">
+<?php require_once VIEW_PATH . "/common/leftMenu.phtml"; ?>
 
     <div id="content" class="span10">
-    <!-- content starts -->
+        <!-- content starts -->
 
-<div class="row-fluid sortable">
-<div class="box span12">
-<div class="box-header well" data-original-title>
-    <h2>
-        <i class="icon-user"></i> <?php echo $tableName;?>
-        <a class="btn btn-success btn-new" href="javascript:;"><i class="icon icon-folder-open icon-white"></i> New</a>
-    </h2>
-    <div class="box-icon">
-        <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-        <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-        <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-    </div>
-</div>
+        <div class="row-fluid sortable">
+            <div class="box span12">
+                <div class="box-header well" data-original-title>
+                    <h2>
+                        <i class="icon-user"></i> <?php echo $tableName; ?>
+                        <a class="btn btn-success btn-new" href="javascript:;"><i
+                                class="icon icon-folder-open icon-white"></i> New</a>
+                    </h2>
 
-<div class="box-content">
-    <div id="table-scaffold">
-    </div>
-    <div id="table-scaffold-filter" class="modal hide">
-        <div class="modal-header">
-            <button class="close" data-dismiss="modal">x</button>
-            <h3>Filter Options</h3>
-        </div>
-        <div class="modal-body">
-            <form method="post">
-                <fieldset>
-                    <legend>Legend text</legend>
-                    <div class="control-group">
-                        <label class="control-label" for="input01">Text input</label>
-                        <div class="controls">
-                            <input type="text" class="input-xlarge" id="input01">
-                            <p class="help-block">Supporting help text</p>
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                    </div>
+                </div>
+
+                <div class="box-content">
+                    <div id="table-scaffold">
+                    </div>
+                    <div id="table-scaffold-filter" class="modal hide">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal">x</button>
+                            <h3>Filter Options</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post">
+                                <fieldset>
+                                    <legend>Legend text</legend>
+                                    <div class="control-group">
+                                        <label class="control-label" for="input01">Text input</label>
+
+                                        <div class="controls">
+                                            <input type="text" class="input-xlarge" id="input01">
+
+                                            <p class="help-block">Supporting help text</p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn">Close</a>
+                            <a href="#" class="btn btn-primary">Save changes</a>
                         </div>
                     </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <a href="#" class="btn">Close</a>
-            <a href="#" class="btn btn-primary">Save changes</a>
-        </div>
+
+                    <span id="api-getrow" data-api="<?php echo $api['getrow']; ?>"></span>
+                    <span id="api-modify" data-api="<?php echo $api['modify']; ?>/"></span>
+                    <span id="api-remove" data-api="<?php echo $api['remove']; ?>"></span>
+                </div>
+
+
+            </div><!--/span-->
+
+        </div><!--/row-->
     </div>
 
-    <span id="api-getrow" data-api="<?php echo $api['getrow'];?>"></span>
-    <span id="api-modify" data-api="<?php echo $api['modify'];?>/"></span>
-    <span id="api-remove" data-api="<?php echo $api['remove'];?>"></span>
-</div>
+<?php require_once VIEW_PATH . '/scaffoldView/modify.phtml'; ?>
 
 
-</div><!--/span-->
-
-</div><!--/row-->
-</div>
-
-<?php require_once VIEW_PATH.'/scaffoldView/modify.phtml';?>
-
-
-<?php require_once VIEW_PATH.'/common/footer.phtml';?>
+<?php require_once VIEW_PATH . '/common/footer.phtml'; ?>

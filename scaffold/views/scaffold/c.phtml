@@ -1,15 +1,17 @@
-<?php require_once VIEW_PATH."/common/header.phtml";?>
+<?php require_once VIEW_PATH . "/common/header.phtml"; ?>
 
-<?php require_once VIEW_PATH."/common/topbar.phtml";?>
+<?php require_once VIEW_PATH . "/common/topbar.phtml"; ?>
     <div class="container-fluid">
     <div class="row-fluid">
-    <?php require_once VIEW_PATH."/common/leftMenu.phtml";?>
+<?php require_once VIEW_PATH . "/common/leftMenu.phtml"; ?>
 
 
     <noscript>
         <div class="alert alert-block span10">
             <h4 class="alert-heading">Warning!</h4>
-            <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+
+            <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled
+                to use this site.</p>
         </div>
     </noscript>
 
@@ -32,6 +34,7 @@
         <div class="box span12">
             <div class="box-header well">
                 <h2><i class="icon-info-sign"></i> Error MSG</h2>
+
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
                     <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -39,9 +42,11 @@
                 </div>
             </div>
             <div class="box-content">
-                <h1><small><?php echo $errorMSG;?></small></h1>
+                <h1>
+                    <small><?php echo $errorMSG; ?></small>
+                </h1>
                 <div class="clearfix"></div>
             </div>
         </div>
     </div>
-<?php require_once VIEW_PATH.'/common/footer.phtml';?>
+<?php require_once VIEW_PATH . '/common/footer.phtml'; ?>

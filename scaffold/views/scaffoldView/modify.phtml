@@ -6,23 +6,26 @@
     <div class="modal-body">
         <form class="form-horizontal" id="form-modify">
             <div class="control-group">
-                <?php foreach($columns as $column_name => $info){?>
+                <?php foreach ($columns as $column_name => $info) { ?>
                     <label class="control-label">
-                        <?php echo $column_name;?> [<?php echo $info['COLUMN_COMMENT'];?>]
+                        <?php echo $column_name; ?> [<?php echo $info['COLUMN_COMMENT']; ?>]
                     </label>
                     <div class="controls">
-                        <?php if ($column_name == $primary){?>
-                        <input class="input-xlarge disabled" id="focusedInput" type="text" name="<?php echo $column_name;?>" value="">
-                        <?php }else{?>
-                            <?php if ($info['COLUMN_TYPE'] == 'text'){?>
-                                <textarea class="input-xlarge" id="textarea2" name="<?php echo $column_name;?>" rows="3"></textarea>
-                            <?php }else{?>
-                        <input class="input-xlarge focused" id="focusedInput" type="text" name="<?php echo $column_name;?>" value="">
-                            <?php }?>
-                        <?php }?>
+                        <?php if ($column_name == $primary) { ?>
+                            <input class="input-xlarge disabled" id="focusedInput" type="text"
+                                   name="<?php echo $column_name; ?>" value="">
+                        <?php } else { ?>
+                            <?php if ($info['COLUMN_TYPE'] == 'text') { ?>
+                                <textarea class="input-xlarge" id="textarea2" name="<?php echo $column_name; ?>"
+                                          rows="3"></textarea>
+                            <?php } else { ?>
+                                <input class="input-xlarge focused" id="focusedInput" type="text"
+                                       name="<?php echo $column_name; ?>" value="">
+                            <?php } ?>
+                        <?php } ?>
                     </div>
-                    <br />
-                <?php }?>
+                    <br/>
+                <?php } ?>
             </div>
         </form>
 

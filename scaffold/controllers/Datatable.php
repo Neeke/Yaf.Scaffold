@@ -1,21 +1,23 @@
 <?php
-/**
- * @author ciogao@gmail.com
- * Date: 13-8-21 上午12:49
- */
-class DatatableController extends Scaffold {
-
-    public function init()
-    {
-        parent::init();
-    }
 
     /**
-     * 数据库字典
+     * @author ciogao@gmail.com
+     * Date: 13-8-21 上午12:49
      */
-    public function dicAction()
+    class DatatableController extends Scaffold
     {
-        $dataDics = models_datadic::getInstance()->getDataDics();
-        $this->set('dataDics',$dataDics);
+
+        public function init()
+        {
+            parent::init();
+        }
+
+        /**
+         * 数据库字典
+         */
+        public function dicAction()
+        {
+            $dataDics = models_datadic::getInstance()->getDataDics();
+            $this->set('dataDics', $dataDics);
+        }
     }
-}

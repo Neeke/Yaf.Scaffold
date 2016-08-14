@@ -3,19 +3,27 @@
     <div class="well nav-collapse sidebar-nav">
         <ul class="nav nav-tabs nav-stacked main-menu">
             <li class="nav-header hidden-tablet">Main</li>
-            <li><a class="ajax-link" href="<?php echo helper_common::site_url('scaffold/main');?>"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
-            <li><a class="ajax-link" href="<?php echo helper_common::site_url('Datatable/dic');?>"><i class="icon-list-alt"></i><span class="hidden-tablet"> DataTable Dic</span></a></li>
-            <li><a class="ajax-link" href="<?php echo helper_common::site_url('config/scaffold');?>"><i class="icon-th"></i><span class="hidden-tablet"> Scaffold Config</span></a></li>
+            <li><a class="ajax-link" href="<?php echo helper_common::site_url('scaffold/main'); ?>"><i
+                        class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
+            <li><a class="ajax-link" href="<?php echo helper_common::site_url('Datatable/dic'); ?>"><i
+                        class="icon-list-alt"></i><span class="hidden-tablet"> DataTable Dic</span></a></li>
+            <li><a class="ajax-link" href="<?php echo helper_common::site_url('config/scaffold'); ?>"><i
+                        class="icon-th"></i><span class="hidden-tablet"> Scaffold Config</span></a></li>
 
             <li class="nav-header hidden-tablet">Sample Section</li>
-            <li><a class="ajax-link" href="<?php echo helper_common::site_url('admin/scaffold');?>"><i class="icon-edit"></i><span class="hidden-tablet"> admin/scaffold</span></a></li>
+            <li><a class="ajax-link" href="<?php echo helper_common::site_url('admin/scaffold'); ?>"><i
+                        class="icon-edit"></i><span class="hidden-tablet"> admin/scaffold</span></a></li>
 
             <li class="nav-header hidden-tablet">Section From Config</li>
-            <?php foreach($scaffold_configs as $config){?>
-            <li><a class="ajax-link" href="<?php echo helper_common::site_url('scaffold/c/model/'.$config['model_name']);?>"><i class="icon-edit"></i><span class="hidden-tablet"><?php echo $config['model_name'];?></span></a></li>
-            <?php }?>
+            <?php foreach ($scaffold_configs as $config) { ?>
+                <li><a class="ajax-link"
+                       href="<?php echo helper_common::site_url('scaffold/c/model/' . $config['model_name']); ?>"><i
+                            class="icon-edit"></i><span
+                            class="hidden-tablet"><?php echo $config['model_name']; ?></span></a></li>
+            <?php } ?>
         </ul>
-        <label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
+        <label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on
+            menu</label>
     </div><!--/.well -->
 </div><!--/span-->
 <!-- left menu ends -->

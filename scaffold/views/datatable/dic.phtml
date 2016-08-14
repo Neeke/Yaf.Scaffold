@@ -1,57 +1,58 @@
-<?php require_once VIEW_PATH."/common/header.phtml";?>
+<?php require_once VIEW_PATH . "/common/header.phtml"; ?>
 
-<?php require_once VIEW_PATH."/common/topbar.phtml";?>
-<div class="container-fluid">
-<div class="row-fluid">
-<?php require_once VIEW_PATH."/common/leftMenu.phtml";?>
+<?php require_once VIEW_PATH . "/common/topbar.phtml"; ?>
+    <div class="container-fluid">
+    <div class="row-fluid">
+<?php require_once VIEW_PATH . "/common/leftMenu.phtml"; ?>
 
-<div id="content" class="span10">
-<!-- content starts -->
+    <div id="content" class="span10">
+        <!-- content starts -->
 
-    <?php foreach($dataDics as $table_name => $table_info){?>
-    <div class="row-fluid sortable">
-    <div class="box span12">
-    <div class="box-header well" data-original-title>
-        <h2>
-            <i class="icon-user"></i> <?php echo $table_name;?>
-            [<?php echo $table_info['ENGINE'];?>  <?php echo $table_info['TABLE_COLLATION'];?>]
-        </h2>
-        <div class="box-icon">
-            <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-            <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-            <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-        </div>
+        <?php foreach ($dataDics as $table_name => $table_info) { ?>
+            <div class="row-fluid sortable">
+                <div class="box span12">
+                    <div class="box-header well" data-original-title>
+                        <h2>
+                            <i class="icon-user"></i> <?php echo $table_name; ?>
+                            [<?php echo $table_info['ENGINE']; ?>  <?php echo $table_info['TABLE_COLLATION']; ?>]
+                        </h2>
+
+                        <div class="box-icon">
+                            <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+                            <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+                            <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                            <thead>
+                            <tr>
+                                <th>字段名</th>
+                                <th>扩展值</th>
+                                <th>数据类型</th>
+                                <th>默认值</th>
+                                <th>字符编码</th>
+                                <th>备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($table_info['columns'] as $columsName => $columsInfo) { ?>
+                                <tr>
+                                    <td><?php echo $columsInfo['COLUMN_NAME']; ?></td>
+                                    <td class="center"><?php echo $columsInfo['COLUMN_KEY']; ?><?php echo $columsInfo['EXTRA']; ?></td>
+                                    <td class="center"><?php echo $columsInfo['COLUMN_TYPE']; ?></td>
+                                    <td class="center"><?php echo $columsInfo['COLUMN_DEFAULT']; ?></td>
+                                    <td class="center"><?php echo $columsInfo['COLLATION_NAME']; ?></td>
+                                    <td class="center"><?php echo $columsInfo['COLUMN_COMMENT']; ?></td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!--/span-->
+
+            </div><!--/row-->
+        <?php } ?>
     </div>
-    <div class="box-content">
-    <table class="table table-striped table-bordered bootstrap-datatable datatable">
-    <thead>
-    <tr>
-        <th>字段名</th>
-        <th>扩展值</th>
-        <th>数据类型</th>
-        <th>默认值</th>
-        <th>字符编码</th>
-        <th>备注</th>
-    </tr>
-    </thead>
-        <tbody>
-            <?php foreach($table_info['columns'] as $columsName => $columsInfo){?>
-                <tr>
-                    <td><?php echo $columsInfo['COLUMN_NAME'];?></td>
-                    <td class="center"><?php echo $columsInfo['COLUMN_KEY'];?>  <?php echo $columsInfo['EXTRA'];?></td>
-                    <td class="center"><?php echo $columsInfo['COLUMN_TYPE'];?></td>
-                    <td class="center"><?php echo $columsInfo['COLUMN_DEFAULT'];?></td>
-                    <td class="center"><?php echo $columsInfo['COLLATION_NAME'];?></td>
-                    <td class="center"><?php echo $columsInfo['COLUMN_COMMENT'];?></td>
-                </tr>
-            <?php }?>
-        </tbody>
-    </table>
-    </div>
-    </div><!--/span-->
 
-    </div><!--/row-->
-    <?php }?>
-</div>
-
-<?php require_once VIEW_PATH.'/common/footer.phtml';?>
+<?php require_once VIEW_PATH . '/common/footer.phtml'; ?>
