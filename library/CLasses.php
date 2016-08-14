@@ -1,1982 +1,1987 @@
 <?php
-/**
- * Class Yaf_Application
- */
-final class Yaf_Application
-{
-    /* constants */
-
-    /* properties */
-    protected $config = NULL;
-    protected $dispatcher = NULL;
-    static protected $_app = NULL;
-    protected $_modules = NULL;
-    protected $_running = "";
-    protected $_environ = "product";
-    protected $_err_no = "0";
-    protected $_err_msg = "";
-
-    /* methods */
-    public function __construct($config, $envrion = NULL)
-    {
-    }
-
-    public function __set()
-    {
-    }
-
-    public function __get()
-    {
-    }
-
-    public function run()
-    {
-    }
-
-    public function execute($entry, $_ = "...")
-    {
-    }
 
     /**
-     * @return Yaf_Application
+     * Class Yaf_Application
      */
-    public static function app()
-    {
-    }
-
-    public function environ()
-    {
-    }
-
-    public function bootstrap($bootstrap = NULL)
-    {
-    }
-
-    /**
-     * @reutrn void
-     */
-    public function getConfig()
-    {
-    }
-
-    public function getModules()
-    {
-    }
-
-    public function getDispatcher()
-    {
-    }
-
-    public function setAppDirectory($directory)
-    {
-    }
-
-    public function getAppDirectory()
-    {
-    }
-
-    public function getLastErrorNo()
-    {
-    }
-
-    public function getLastErrorMsg()
-    {
-    }
-
-    public function clearLastError()
-    {
-    }
-
-    public function __destruct()
-    {
-    }
-
-    private function __clone()
-    {
-    }
-
-    private function __sleep()
-    {
-    }
-
-    private function __wakeup()
-    {
-    }
-}
-
-abstract class Yaf_Bootstrap_Abstract
-{
-    /* constants */
-
-    /* properties */
-
-    /* methods */
-}
-
-final class Yaf_Dispatcher
-{
-    /* constants */
-
-    /* properties */
-    protected $_router = NULL;
-    protected $_view = NULL;
-    protected $_request = NULL;
-    protected $_plugins = NULL;
-    static protected $_instance = NULL;
-    protected $_auto_render = "1";
-    protected $_return_response = "";
-    protected $_instantly_flush = "";
-    protected $_default_module = NULL;
-    protected $_default_controller = NULL;
-    protected $_default_action = NULL;
-
-    /* methods */
-    private function __construct()
-    {
-    }
-
-    private function __clone()
-    {
-    }
-
-    private function __sleep()
-    {
-    }
-
-    private function __wakeup()
-    {
-    }
-
-    public function enableView()
-    {
-    }
-
-    public function disableView()
-    {
-    }
-
-    public function initView($templates_dir, array $options = NULL)
-    {
-    }
-
-    public function setView($view)
-    {
-    }
-
-    public function setRequest($request)
-    {
-    }
-
-    public function getApplication()
-    {
-    }
-
-    public function getRouter()
-    {
-    }
-
-    public function getRequest()
-    {
-    }
-
-    public function setErrorHandler($callback, $error_types)
-    {
-    }
-
-    public function setDefaultModule($module)
-    {
-    }
-
-    public function setDefaultController($controller)
-    {
-    }
-
-    public function setDefaultAction($action)
-    {
-    }
-
-    public function returnResponse($flag)
-    {
-    }
-
-    public function autoRender($flag)
-    {
-    }
-
-    public function flushInstantly($flag)
-    {
-    }
-
-    /**
-     * @return Yaf_Dispatcher
-     */
-    public static function getInstance()
-    {
-    }
-
-    public function dispatch($request)
-    {
-    }
-
-    public function throwException($flag = NULL)
-    {
-    }
-
-    public function catchException($flag = NULL)
-    {
-    }
-
-    public function registerPlugin($plugin)
-    {
-    }
-}
-
-final class Yaf_Loader
-{
-    /* constants */
-
-    /* properties */
-    protected $_local_ns = NULL;
-    protected $_library = NULL;
-    protected $_global_library = NULL;
-    static protected $_instance = NULL;
-
-    /* methods */
-    private function __construct()
-    {
-    }
-
-    private function __clone()
-    {
-    }
-
-    private function __sleep()
-    {
-    }
-
-    private function __wakeup()
-    {
-    }
-
-    public function autoload($class_name)
-    {
-    }
-
-    public static function getInstance($local_library_path = NULL, $global_library_path = NULL)
-    {
-    }
-
-    public function registerLocalNamespace($name_prefix)
-    {
-    }
-
-    public function getLocalNamespace()
-    {
-    }
-
-    public function clearLocalNamespace()
-    {
-    }
-
-    public function isLocalName($class_name)
-    {
-    }
-
-    public static function import($file)
-    {
-    }
-
-    public function setLibraryPath($library_path, $is_global = NULL)
-    {
-    }
-
-    public function getLibraryPath($is_global = NULL)
-    {
-    }
-}
-
-abstract class Yaf_Request_Abstract
-{
-    /* constants */
-    const SCHEME_HTTP  = http;
-    const SCHEME_HTTPS = https;
-
-    /* properties */
-    public $module = NULL;
-    public $controller = NULL;
-    public $action = NULL;
-    public $method = NULL;
-    protected $params = NULL;
-    protected $language = NULL;
-    protected $_exception = NULL;
-    protected $_base_uri = "";
-    protected $uri = "";
-    protected $dispatched = "";
-    protected $routed = "";
-
-    /* methods */
-    public function isGet()
-    {
-    }
-
-    public function isPost()
-    {
-    }
-
-    public function isPut()
-    {
-    }
-
-    public function isHead()
-    {
-    }
-
-    public function isOptions()
-    {
-    }
-
-    public function isCli()
-    {
-    }
-
-    public function isXmlHttpRequest()
-    {
-    }
-
-    public function getServer($name, $default = NULL)
-    {
-    }
-
-    public function getEnv($name, $default = NULL)
-    {
-    }
-
-    public function setParam($name, $value = NULL)
-    {
-    }
-
-    public function getParam($name, $default = NULL)
-    {
-    }
-
-    public function getParams()
-    {
-    }
-
-    public function getException()
-    {
-    }
-
-    public function getModuleName()
-    {
-    }
-
-    public function getControllerName()
-    {
-    }
-
-    public function getActionName()
-    {
-    }
-
-    public function setModuleName($module)
-    {
-    }
-
-    public function setControllerName($controller)
-    {
-    }
-
-    public function setActionName($action)
-    {
-    }
+    final class Yaf_Application
+    {
+        /* constants */
+
+        /* properties */
+        protected $config = NULL;
+        protected $dispatcher = NULL;
+        static protected $_app = NULL;
+        protected $_modules = NULL;
+        protected $_running = "";
+        protected $_environ = "product";
+        protected $_err_no = "0";
+        protected $_err_msg = "";
 
-    public function getMethod()
-    {
-    }
-
-    public function getLanguage()
-    {
-    }
-
-    public function setBaseUri($uir)
-    {
-    }
-
-    public function getBaseUri()
-    {
-    }
-
-    public function getRequestUri()
-    {
-    }
-
-    public function setRequestUri($uir)
-    {
-    }
-
-    public function isDispatched()
-    {
-    }
-
-    public function setDispatched()
-    {
-    }
-
-    public function isRouted()
-    {
-    }
-
-    public function setRouted($flag = NULL)
-    {
-    }
-}
-
-class Yaf_Request_Http extends Yaf_Request_Abstract
-{
-    /* constants */
-
-    /* properties */
-    public $module = NULL;
-    public $controller = NULL;
-    public $action = NULL;
-    public $method = NULL;
-    protected $params = NULL;
-    protected $language = NULL;
-    protected $_exception = NULL;
-    protected $_base_uri = "";
-    protected $uri = "";
-    protected $dispatched = "";
-    protected $routed = "";
-
-    /* methods */
-    public function getQuery()
-    {
-        return array();
-    }
-
-    public function getRequest()
-    {
-        return array();
-    }
-
-    public function getPost()
-    {
-        return array();
-    }
-
-    public function getCookie()
-    {
-    }
-
-    public function getFiles()
-    {
-    }
-
-    public function get()
-    {
-    }
-
-    public function isXmlHttpRequest()
-    {
-    }
-
-    public function __construct()
-    {
-    }
-
-    private function __clone()
-    {
-    }
-
-    public function isGet()
-    {
-    }
-
-    public function isPost()
-    {
-    }
-
-    public function isPut()
-    {
-    }
-
-    public function isHead()
-    {
-    }
-
-    public function isOptions()
-    {
-    }
-
-    public function isCli()
-    {
-    }
-
-    public function getServer($name, $default = NULL)
-    {
-    }
-
-    public function getEnv($name, $default = NULL)
-    {
-    }
-
-    public function setParam($name, $value = NULL)
-    {
-    }
-
-    /**
-     * @param $name
-     * @param null $default
-     * @return int|void
-     */
-    public function getParam($name, $default = NULL)
-    {
-        return 1;
-    }
-
-    /**
-     * @return array|void
-     */
-    public function getParams()
-    {
-        return array();
-    }
-
-    public function getException()
-    {
-    }
-
-    public function getModuleName()
-    {
-    }
-
-    public function getControllerName()
-    {
-    }
-
-    public function getActionName()
-    {
-    }
-
-    public function setModuleName($module)
-    {
-    }
-
-    public function setControllerName($controller)
-    {
-    }
-
-    public function setActionName($action)
-    {
-    }
-
-    public function getMethod()
-    {
-    }
-
-    public function getLanguage()
-    {
-    }
-
-    public function setBaseUri($uir)
-    {
-    }
-
-    public function getBaseUri()
-    {
-    }
-
-    public function getRequestUri()
-    {
-    }
-
-    public function setRequestUri($uir)
-    {
-    }
-
-    public function isDispatched()
-    {
-    }
-
-    public function setDispatched()
-    {
-    }
-
-    public function isRouted()
-    {
-    }
-
-    public function setRouted($flag = NULL)
-    {
-    }
-}
-
-final class Yaf_Request_Simple extends Yaf_Request_Abstract
-{
-    /* constants */
-    const SCHEME_HTTP  = http;
-    const SCHEME_HTTPS = https;
-
-    /* properties */
-    public $module = NULL;
-    public $controller = NULL;
-    public $action = NULL;
-    public $method = NULL;
-    protected $params = NULL;
-    protected $language = NULL;
-    protected $_exception = NULL;
-    protected $_base_uri = "";
-    protected $uri = "";
-    protected $dispatched = "";
-    protected $routed = "";
-
-    /* methods */
-    public function __construct()
-    {
-    }
-
-    private function __clone()
-    {
-    }
-
-    public function getQuery()
-    {
-    }
-
-    public function getRequest()
-    {
-    }
-
-    public function getPost()
-    {
-    }
-
-    public function getCookie()
-    {
-    }
-
-    public function getFiles()
-    {
-    }
-
-    public function get()
-    {
-    }
-
-    public function isXmlHttpRequest()
-    {
-    }
-
-    public function isGet()
-    {
-    }
-
-    public function isPost()
-    {
-    }
-
-    public function isPut()
-    {
-    }
-
-    public function isHead()
-    {
-    }
-
-    public function isOptions()
-    {
-    }
-
-    public function isCli()
-    {
-    }
-
-    public function getServer($name, $default = NULL)
-    {
-    }
-
-    public function getEnv($name, $default = NULL)
-    {
-    }
-
-    public function setParam($name, $value = NULL)
-    {
-    }
-
-    public function getParam($name, $default = NULL)
-    {
-    }
-
-    public function getParams()
-    {
-    }
-
-    public function getException()
-    {
-    }
-
-    public function getModuleName()
-    {
-    }
-
-    public function getControllerName()
-    {
-    }
-
-    public function getActionName()
-    {
-    }
+        /* methods */
+        public function __construct($config, $envrion = NULL)
+        {
+        }
 
-    public function setModuleName($module)
-    {
-    }
+        public function __set()
+        {
+        }
 
-    public function setControllerName($controller)
-    {
-    }
+        public function __get()
+        {
+        }
+
+        public function run()
+        {
+        }
+
+        public function execute($entry, $_ = "...")
+        {
+        }
+
+        /**
+         * @return Yaf_Application
+         */
+        public static function app()
+        {
+        }
+
+        public function environ()
+        {
+        }
+
+        public function bootstrap($bootstrap = NULL)
+        {
+        }
+
+        /**
+         * @reutrn void
+         */
+        public function getConfig()
+        {
+        }
+
+        public function getModules()
+        {
+        }
+
+        public function getDispatcher()
+        {
+        }
+
+        public function setAppDirectory($directory)
+        {
+        }
+
+        public function getAppDirectory()
+        {
+        }
+
+        public function getLastErrorNo()
+        {
+        }
+
+        public function getLastErrorMsg()
+        {
+        }
+
+        public function clearLastError()
+        {
+        }
+
+        public function __destruct()
+        {
+        }
+
+        private function __clone()
+        {
+        }
+
+        private function __sleep()
+        {
+        }
+
+        private function __wakeup()
+        {
+        }
+    }
 
-    public function setActionName($action)
+    abstract class Yaf_Bootstrap_Abstract
     {
-    }
+        /* constants */
 
-    public function getMethod()
-    {
-    }
+        /* properties */
 
-    public function getLanguage()
-    {
+        /* methods */
     }
 
-    public function setBaseUri($uir)
+    final class Yaf_Dispatcher
     {
-    }
+        /* constants */
 
-    public function getBaseUri()
-    {
-    }
+        /* properties */
+        protected $_router = NULL;
+        protected $_view = NULL;
+        protected $_request = NULL;
+        protected $_plugins = NULL;
+        static protected $_instance = NULL;
+        protected $_auto_render = "1";
+        protected $_return_response = "";
+        protected $_instantly_flush = "";
+        protected $_default_module = NULL;
+        protected $_default_controller = NULL;
+        protected $_default_action = NULL;
 
-    public function getRequestUri()
-    {
-    }
+        /* methods */
+        private function __construct()
+        {
+        }
 
-    public function setRequestUri($uir)
-    {
-    }
+        private function __clone()
+        {
+        }
 
-    public function isDispatched()
-    {
-    }
+        private function __sleep()
+        {
+        }
 
-    public function setDispatched()
-    {
-    }
+        private function __wakeup()
+        {
+        }
 
-    public function isRouted()
-    {
-    }
+        public function enableView()
+        {
+        }
 
-    public function setRouted($flag = NULL)
-    {
-    }
-}
-
-abstract class Yaf_Response_Abstract
-{
-    /* constants */
-
-    /* properties */
-    protected $_header = NULL;
-    protected $_body = NULL;
-    protected $_sendheader = "";
-
-    /* methods */
-    public function __construct()
-    {
-    }
+        public function disableView()
+        {
+        }
 
-    public function __destruct()
-    {
-    }
+        public function initView($templates_dir, array $options = NULL)
+        {
+        }
 
-    private function __clone()
-    {
-    }
+        public function setView($view)
+        {
+        }
 
-    private function __toString()
-    {
-    }
+        public function setRequest($request)
+        {
+        }
 
-    public function setBody()
-    {
-    }
+        public function getApplication()
+        {
+        }
 
-    public function appendBody()
-    {
-    }
+        public function getRouter()
+        {
+        }
 
-    public function prependBody()
-    {
-    }
+        public function getRequest()
+        {
+        }
 
-    public function clearBody()
-    {
-    }
+        public function setErrorHandler($callback, $error_types)
+        {
+        }
 
-    public function getBody()
-    {
-    }
+        public function setDefaultModule($module)
+        {
+        }
 
-    public function setHeader()
-    {
-    }
+        public function setDefaultController($controller)
+        {
+        }
 
-    protected function setAllHeaders()
-    {
-    }
+        public function setDefaultAction($action)
+        {
+        }
 
-    public function getHeader()
-    {
-    }
+        public function returnResponse($flag)
+        {
+        }
 
-    public function clearHeaders()
-    {
-    }
+        public function autoRender($flag)
+        {
+        }
 
-    public function setRedirect()
-    {
-    }
+        public function flushInstantly($flag)
+        {
+        }
 
-    public function response()
-    {
-    }
-}
-
-class Yaf_Response_Http extends Yaf_Response_Abstract
-{
-    /* constants */
-
-    /* properties */
-    protected $_header = NULL;
-    protected $_body = NULL;
-    protected $_sendheader = "1";
-    protected $_response_code = "200";
-
-    /* methods */
-    public function __construct()
-    {
-    }
+        /**
+         * @return Yaf_Dispatcher
+         */
+        public static function getInstance()
+        {
+        }
 
-    public function __destruct()
-    {
-    }
+        public function dispatch($request)
+        {
+        }
 
-    private function __clone()
-    {
-    }
+        public function throwException($flag = NULL)
+        {
+        }
 
-    private function __toString()
-    {
-        return '';
-    }
+        public function catchException($flag = NULL)
+        {
+        }
 
-    public function setBody()
-    {
+        public function registerPlugin($plugin)
+        {
+        }
     }
 
-    public function appendBody()
+    final class Yaf_Loader
     {
-    }
+        /* constants */
 
-    public function prependBody()
-    {
-    }
+        /* properties */
+        protected $_local_ns = NULL;
+        protected $_library = NULL;
+        protected $_global_library = NULL;
+        static protected $_instance = NULL;
 
-    public function clearBody()
-    {
-    }
+        /* methods */
+        private function __construct()
+        {
+        }
 
-    public function getBody()
-    {
-    }
+        private function __clone()
+        {
+        }
 
-    public function setHeader()
-    {
-    }
+        private function __sleep()
+        {
+        }
 
-    protected function setAllHeaders()
-    {
-    }
+        private function __wakeup()
+        {
+        }
 
-    public function getHeader()
-    {
-    }
+        public function autoload($class_name)
+        {
+        }
 
-    public function clearHeaders()
-    {
-    }
+        public static function getInstance($local_library_path = NULL, $global_library_path = NULL)
+        {
+        }
 
-    public function setRedirect()
-    {
-    }
+        public function registerLocalNamespace($name_prefix)
+        {
+        }
 
-    public function response()
-    {
-    }
-}
-
-class Yaf_Response_Cli extends Yaf_Response_Abstract
-{
-    /* constants */
-
-    /* properties */
-    protected $_header = NULL;
-    protected $_body = NULL;
-    protected $_sendheader = "";
-
-    /* methods */
-    public function __construct()
-    {
-    }
+        public function getLocalNamespace()
+        {
+        }
 
-    public function __destruct()
-    {
-    }
+        public function clearLocalNamespace()
+        {
+        }
 
-    private function __clone()
-    {
-    }
+        public function isLocalName($class_name)
+        {
+        }
 
-    private function __toString()
-    {
-        return '';
-    }
+        public static function import($file)
+        {
+        }
 
-    public function setBody()
-    {
-    }
+        public function setLibraryPath($library_path, $is_global = NULL)
+        {
+        }
 
-    public function appendBody()
-    {
+        public function getLibraryPath($is_global = NULL)
+        {
+        }
     }
 
-    public function prependBody()
+    abstract class Yaf_Request_Abstract
     {
-    }
+        /* constants */
+        const SCHEME_HTTP = http;
+        const SCHEME_HTTPS = https;
 
-    public function clearBody()
-    {
-    }
+        /* properties */
+        public $module = NULL;
+        public $controller = NULL;
+        public $action = NULL;
+        public $method = NULL;
+        protected $params = NULL;
+        protected $language = NULL;
+        protected $_exception = NULL;
+        protected $_base_uri = "";
+        protected $uri = "";
+        protected $dispatched = "";
+        protected $routed = "";
 
-    public function getBody()
-    {
-    }
+        /* methods */
+        public function isGet()
+        {
+        }
 
-    public function setHeader()
-    {
-    }
+        public function isPost()
+        {
+        }
 
-    protected function setAllHeaders()
-    {
-    }
+        public function isPut()
+        {
+        }
 
-    public function getHeader()
-    {
-    }
+        public function isHead()
+        {
+        }
 
-    public function clearHeaders()
-    {
-    }
+        public function isOptions()
+        {
+        }
 
-    public function setRedirect()
-    {
-    }
+        public function isCli()
+        {
+        }
 
-    public function response()
-    {
-    }
-}
-
-abstract class Yaf_Controller_Abstract
-{
-    /* constants */
-
-    /* properties */
-    public $actions = NULL;
-    protected $_module = NULL;
-    protected $_name = NULL;
-    /**
-     * @var Yaf_Request_Abstract
-     */
-    protected $_request = NULL;
-    protected $_response = NULL;
-    protected $_invoke_args = NULL;
-    protected $_view = NULL;
-
-    /* methods */
-    protected function render($tpl, array $parameters = NULL)
-    {
-    }
+        public function isXmlHttpRequest()
+        {
+        }
 
-    protected function display($tpl, array $parameters = NULL)
-    {
-    }
+        public function getServer($name, $default = NULL)
+        {
+        }
 
-    /**
-     * @return Yaf_Request_Http
-     */
-    public function getRequest()
-    {
-    }
+        public function getEnv($name, $default = NULL)
+        {
+        }
 
-    public function getResponse()
-    {
-    }
+        public function setParam($name, $value = NULL)
+        {
+        }
 
-    public function getModuleName()
-    {
-    }
+        public function getParam($name, $default = NULL)
+        {
+        }
 
-    /**
-     * @return Yaf_View_Simple
-     */
-    public function getView()
-    {
-    }
+        public function getParams()
+        {
+        }
 
-    public function initView(array $options = NULL)
-    {
-    }
+        public function getException()
+        {
+        }
 
-    public function setViewpath($view_directory)
-    {
-    }
+        public function getModuleName()
+        {
+        }
 
-    public function getViewpath()
-    {
-    }
+        public function getControllerName()
+        {
+        }
 
-    public function forward($module, $controller = NULL, $action = NULL, array $paramters = NULL)
-    {
-    }
+        public function getActionName()
+        {
+        }
 
-    public function redirect($url)
-    {
-    }
+        public function setModuleName($module)
+        {
+        }
 
-    public function getInvokeArgs()
-    {
-    }
+        public function setControllerName($controller)
+        {
+        }
 
-    public function getInvokeArg($name)
-    {
-    }
+        public function setActionName($action)
+        {
+        }
 
-    public function __construct()
-    {
-    }
+        public function getMethod()
+        {
+        }
 
-    private function __clone()
-    {
-    }
-}
-
-abstract class Yaf_Action_Abstract extends Yaf_Controller_Abstract
-{
-    /* constants */
-
-    /* properties */
-    public $actions = NULL;
-    protected $_module = NULL;
-    protected $_name = NULL;
-    protected $_request = NULL;
-    protected $_response = NULL;
-    protected $_invoke_args = NULL;
-    protected $_view = NULL;
-    protected $_controller = NULL;
-
-    /* methods */
-    final public function execute()
-    {
-    }
+        public function getLanguage()
+        {
+        }
 
-    public function getController()
-    {
-    }
+        public function setBaseUri($uir)
+        {
+        }
 
-    final protected function render($tpl, array $parameters = NULL)
-    {
-    }
+        public function getBaseUri()
+        {
+        }
 
-    final protected function display($tpl, array $parameters = NULL)
-    {
-    }
+        public function getRequestUri()
+        {
+        }
 
-    final public function getRequest()
-    {
-    }
+        public function setRequestUri($uir)
+        {
+        }
 
-    final public function getResponse()
-    {
-    }
+        public function isDispatched()
+        {
+        }
 
-    final public function getModuleName()
-    {
-    }
+        public function setDispatched()
+        {
+        }
 
-    final public function getView()
-    {
-    }
+        public function isRouted()
+        {
+        }
 
-    final public function initView(array $options = NULL)
-    {
-    }
+        public function setRouted($flag = NULL)
+        {
+        }
+    }
+
+    class Yaf_Request_Http extends Yaf_Request_Abstract
+    {
+        /* constants */
+
+        /* properties */
+        public $module = NULL;
+        public $controller = NULL;
+        public $action = NULL;
+        public $method = NULL;
+        protected $params = NULL;
+        protected $language = NULL;
+        protected $_exception = NULL;
+        protected $_base_uri = "";
+        protected $uri = "";
+        protected $dispatched = "";
+        protected $routed = "";
+
+        /* methods */
+        public function getQuery()
+        {
+            return array();
+        }
+
+        public function getRequest()
+        {
+            return array();
+        }
+
+        public function getPost()
+        {
+            return array();
+        }
+
+        public function getCookie()
+        {
+        }
+
+        public function getFiles()
+        {
+        }
+
+        public function get()
+        {
+        }
+
+        public function isXmlHttpRequest()
+        {
+        }
+
+        public function __construct()
+        {
+        }
+
+        private function __clone()
+        {
+        }
+
+        public function isGet()
+        {
+        }
+
+        public function isPost()
+        {
+        }
+
+        public function isPut()
+        {
+        }
+
+        public function isHead()
+        {
+        }
+
+        public function isOptions()
+        {
+        }
+
+        public function isCli()
+        {
+        }
+
+        public function getServer($name, $default = NULL)
+        {
+        }
+
+        public function getEnv($name, $default = NULL)
+        {
+        }
+
+        public function setParam($name, $value = NULL)
+        {
+        }
+
+        /**
+         * @param $name
+         * @param null $default
+         * @return int|void
+         */
+        public function getParam($name, $default = NULL)
+        {
+            return 1;
+        }
+
+        /**
+         * @return array|void
+         */
+        public function getParams()
+        {
+            return array();
+        }
+
+        public function getException()
+        {
+        }
+
+        public function getModuleName()
+        {
+        }
+
+        public function getControllerName()
+        {
+        }
+
+        public function getActionName()
+        {
+        }
+
+        public function setModuleName($module)
+        {
+        }
+
+        public function setControllerName($controller)
+        {
+        }
+
+        public function setActionName($action)
+        {
+        }
+
+        public function getMethod()
+        {
+        }
+
+        public function getLanguage()
+        {
+        }
+
+        public function setBaseUri($uir)
+        {
+        }
+
+        public function getBaseUri()
+        {
+        }
+
+        public function getRequestUri()
+        {
+        }
+
+        public function setRequestUri($uir)
+        {
+        }
+
+        public function isDispatched()
+        {
+        }
+
+        public function setDispatched()
+        {
+        }
+
+        public function isRouted()
+        {
+        }
+
+        public function setRouted($flag = NULL)
+        {
+        }
+    }
+
+    final class Yaf_Request_Simple extends Yaf_Request_Abstract
+    {
+        /* constants */
+        const SCHEME_HTTP = http;
+        const SCHEME_HTTPS = https;
+
+        /* properties */
+        public $module = NULL;
+        public $controller = NULL;
+        public $action = NULL;
+        public $method = NULL;
+        protected $params = NULL;
+        protected $language = NULL;
+        protected $_exception = NULL;
+        protected $_base_uri = "";
+        protected $uri = "";
+        protected $dispatched = "";
+        protected $routed = "";
+
+        /* methods */
+        public function __construct()
+        {
+        }
+
+        private function __clone()
+        {
+        }
+
+        public function getQuery()
+        {
+        }
+
+        public function getRequest()
+        {
+        }
+
+        public function getPost()
+        {
+        }
+
+        public function getCookie()
+        {
+        }
+
+        public function getFiles()
+        {
+        }
+
+        public function get()
+        {
+        }
+
+        public function isXmlHttpRequest()
+        {
+        }
+
+        public function isGet()
+        {
+        }
+
+        public function isPost()
+        {
+        }
+
+        public function isPut()
+        {
+        }
+
+        public function isHead()
+        {
+        }
+
+        public function isOptions()
+        {
+        }
+
+        public function isCli()
+        {
+        }
+
+        public function getServer($name, $default = NULL)
+        {
+        }
+
+        public function getEnv($name, $default = NULL)
+        {
+        }
+
+        public function setParam($name, $value = NULL)
+        {
+        }
+
+        public function getParam($name, $default = NULL)
+        {
+        }
+
+        public function getParams()
+        {
+        }
+
+        public function getException()
+        {
+        }
+
+        public function getModuleName()
+        {
+        }
+
+        public function getControllerName()
+        {
+        }
+
+        public function getActionName()
+        {
+        }
+
+        public function setModuleName($module)
+        {
+        }
+
+        public function setControllerName($controller)
+        {
+        }
+
+        public function setActionName($action)
+        {
+        }
+
+        public function getMethod()
+        {
+        }
+
+        public function getLanguage()
+        {
+        }
+
+        public function setBaseUri($uir)
+        {
+        }
+
+        public function getBaseUri()
+        {
+        }
+
+        public function getRequestUri()
+        {
+        }
+
+        public function setRequestUri($uir)
+        {
+        }
+
+        public function isDispatched()
+        {
+        }
+
+        public function setDispatched()
+        {
+        }
+
+        public function isRouted()
+        {
+        }
+
+        public function setRouted($flag = NULL)
+        {
+        }
+    }
+
+    abstract class Yaf_Response_Abstract
+    {
+        /* constants */
+
+        /* properties */
+        protected $_header = NULL;
+        protected $_body = NULL;
+        protected $_sendheader = "";
+
+        /* methods */
+        public function __construct()
+        {
+        }
+
+        public function __destruct()
+        {
+        }
+
+        private function __clone()
+        {
+        }
+
+        private function __toString()
+        {
+        }
+
+        public function setBody()
+        {
+        }
+
+        public function appendBody()
+        {
+        }
+
+        public function prependBody()
+        {
+        }
+
+        public function clearBody()
+        {
+        }
+
+        public function getBody()
+        {
+        }
+
+        public function setHeader()
+        {
+        }
 
-    final public function setViewpath($view_directory)
-    {
-    }
+        protected function setAllHeaders()
+        {
+        }
 
-    final public function getViewpath()
-    {
-    }
+        public function getHeader()
+        {
+        }
+
+        public function clearHeaders()
+        {
+        }
+
+        public function setRedirect()
+        {
+        }
+
+        public function response()
+        {
+        }
+    }
+
+    class Yaf_Response_Http extends Yaf_Response_Abstract
+    {
+        /* constants */
+
+        /* properties */
+        protected $_header = NULL;
+        protected $_body = NULL;
+        protected $_sendheader = "1";
+        protected $_response_code = "200";
+
+        /* methods */
+        public function __construct()
+        {
+        }
+
+        public function __destruct()
+        {
+        }
+
+        private function __clone()
+        {
+        }
+
+        private function __toString()
+        {
+            return '';
+        }
+
+        public function setBody()
+        {
+        }
+
+        public function appendBody()
+        {
+        }
+
+        public function prependBody()
+        {
+        }
+
+        public function clearBody()
+        {
+        }
+
+        public function getBody()
+        {
+        }
 
-    final public function forward($module, $controller = NULL, $action = NULL, array $paramters = NULL)
-    {
-    }
+        public function setHeader()
+        {
+        }
 
-    final public function redirect($url)
-    {
-    }
+        protected function setAllHeaders()
+        {
+        }
+
+        public function getHeader()
+        {
+        }
+
+        public function clearHeaders()
+        {
+        }
+
+        public function setRedirect()
+        {
+        }
+
+        public function response()
+        {
+        }
+    }
+
+    class Yaf_Response_Cli extends Yaf_Response_Abstract
+    {
+        /* constants */
+
+        /* properties */
+        protected $_header = NULL;
+        protected $_body = NULL;
+        protected $_sendheader = "";
+
+        /* methods */
+        public function __construct()
+        {
+        }
+
+        public function __destruct()
+        {
+        }
+
+        private function __clone()
+        {
+        }
+
+        private function __toString()
+        {
+            return '';
+        }
+
+        public function setBody()
+        {
+        }
+
+        public function appendBody()
+        {
+        }
+
+        public function prependBody()
+        {
+        }
+
+        public function clearBody()
+        {
+        }
+
+        public function getBody()
+        {
+        }
+
+        public function setHeader()
+        {
+        }
+
+        protected function setAllHeaders()
+        {
+        }
+
+        public function getHeader()
+        {
+        }
+
+        public function clearHeaders()
+        {
+        }
+
+        public function setRedirect()
+        {
+        }
+
+        public function response()
+        {
+        }
+    }
+
+    abstract class Yaf_Controller_Abstract
+    {
+        /* constants */
+
+        /* properties */
+        public $actions = NULL;
+        protected $_module = NULL;
+        protected $_name = NULL;
+        /**
+         * @var Yaf_Request_Abstract
+         */
+        protected $_request = NULL;
+        protected $_response = NULL;
+        protected $_invoke_args = NULL;
+        protected $_view = NULL;
+
+        /* methods */
+        protected function render($tpl, array $parameters = NULL)
+        {
+        }
+
+        protected function display($tpl, array $parameters = NULL)
+        {
+        }
+
+        /**
+         * @return Yaf_Request_Http
+         */
+        public function getRequest()
+        {
+        }
+
+        public function getResponse()
+        {
+        }
+
+        public function getModuleName()
+        {
+        }
+
+        /**
+         * @return Yaf_View_Simple
+         */
+        public function getView()
+        {
+        }
+
+        public function initView(array $options = NULL)
+        {
+        }
+
+        public function setViewpath($view_directory)
+        {
+        }
+
+        public function getViewpath()
+        {
+        }
+
+        public function forward($module, $controller = NULL, $action = NULL, array $paramters = NULL)
+        {
+        }
+
+        public function redirect($url)
+        {
+        }
+
+        public function getInvokeArgs()
+        {
+        }
+
+        public function getInvokeArg($name)
+        {
+        }
+
+        public function __construct()
+        {
+        }
+
+        private function __clone()
+        {
+        }
+    }
+
+    abstract class Yaf_Action_Abstract extends Yaf_Controller_Abstract
+    {
+        /* constants */
+
+        /* properties */
+        public $actions = NULL;
+        protected $_module = NULL;
+        protected $_name = NULL;
+        protected $_request = NULL;
+        protected $_response = NULL;
+        protected $_invoke_args = NULL;
+        protected $_view = NULL;
+        protected $_controller = NULL;
 
-    final public function getInvokeArgs()
-    {
-    }
+        /* methods */
+        final public function execute()
+        {
+        }
 
-    final public function getInvokeArg($name)
-    {
-    }
+        public function getController()
+        {
+        }
+
+        final protected function render($tpl, array $parameters = NULL)
+        {
+        }
+
+        final protected function display($tpl, array $parameters = NULL)
+        {
+        }
+
+        final public function getRequest()
+        {
+        }
+
+        final public function getResponse()
+        {
+        }
+
+        final public function getModuleName()
+        {
+        }
+
+        final public function getView()
+        {
+        }
+
+        final public function initView(array $options = NULL)
+        {
+        }
+
+        final public function setViewpath($view_directory)
+        {
+        }
+
+        final public function getViewpath()
+        {
+        }
+
+        final public function forward($module, $controller = NULL, $action = NULL, array $paramters = NULL)
+        {
+        }
+
+        final public function redirect($url)
+        {
+        }
+
+        final public function getInvokeArgs()
+        {
+        }
+
+        final public function getInvokeArg($name)
+        {
+        }
+
+        final public function __construct()
+        {
+        }
+
+        final private function __clone()
+        {
+        }
+    }
 
-    final public function __construct()
+    abstract class Yaf_Config_Abstract
     {
-    }
+        /* constants */
 
-    final private function __clone()
-    {
-    }
-}
+        /* properties */
+        protected $_config = NULL;
+        protected $_readonly = "1";
 
-abstract class Yaf_Config_Abstract
-{
-    /* constants */
+        /* methods */
+        public function get()
+        {
+        }
 
-    /* properties */
-    protected $_config = NULL;
-    protected $_readonly = "1";
+        public function set()
+        {
+        }
 
-    /* methods */
-    public function get()
-    {
-    }
+        public function readonly()
+        {
+        }
 
-    public function set()
-    {
+        public function toArray()
+        {
+        }
     }
 
-    public function readonly()
+    final class Yaf_Config_Ini extends Yaf_Config_Abstract implements Iterator, Traversable, ArrayAccess, Countable
     {
-    }
+        /* constants */
 
-    public function toArray()
-    {
-    }
-}
+        /* properties */
+        protected $_config = NULL;
+        protected $_readonly = "1";
 
-final class Yaf_Config_Ini extends Yaf_Config_Abstract implements Iterator, Traversable, ArrayAccess, Countable
-{
-    /* constants */
+        /* methods */
+        public function __construct($config_file, $section = NULL)
+        {
+        }
 
-    /* properties */
-    protected $_config = NULL;
-    protected $_readonly = "1";
+        public function __isset($name)
+        {
+        }
 
-    /* methods */
-    public function __construct($config_file, $section = NULL)
-    {
-    }
+        public function get($name = NULL)
+        {
+        }
 
-    public function __isset($name)
-    {
-    }
+        public function set($name, $value)
+        {
+        }
 
-    public function get($name = NULL)
-    {
-    }
+        public function count()
+        {
+        }
 
-    public function set($name, $value)
-    {
-    }
+        public function rewind()
+        {
+        }
 
-    public function count()
-    {
-    }
+        public function current()
+        {
+        }
 
-    public function rewind()
-    {
-    }
+        public function next()
+        {
+        }
 
-    public function current()
-    {
-    }
+        public function valid()
+        {
+        }
 
-    public function next()
-    {
-    }
+        public function key()
+        {
+        }
 
-    public function valid()
-    {
-    }
+        public function toArray()
+        {
+        }
 
-    public function key()
-    {
-    }
+        public function readonly()
+        {
+        }
 
-    public function toArray()
-    {
-    }
+        public function offsetUnset($name)
+        {
+        }
 
-    public function readonly()
-    {
-    }
+        public function offsetGet($name)
+        {
+        }
 
-    public function offsetUnset($name)
-    {
-    }
+        public function offsetExists($name)
+        {
+        }
 
-    public function offsetGet($name)
-    {
-    }
+        public function offsetSet($name, $value)
+        {
+        }
 
-    public function offsetExists($name)
-    {
-    }
+        public function __get($name = NULL)
+        {
+        }
 
-    public function offsetSet($name, $value)
-    {
+        public function __set($name, $value)
+        {
+        }
     }
 
-    public function __get($name = NULL)
+    final class Yaf_Config_Simple extends Yaf_Config_Abstract implements Iterator, Traversable, ArrayAccess, Countable
     {
-    }
+        /* constants */
 
-    public function __set($name, $value)
-    {
-    }
-}
+        /* properties */
+        protected $_config = NULL;
+        protected $_readonly = "";
 
-final class Yaf_Config_Simple extends Yaf_Config_Abstract implements Iterator, Traversable, ArrayAccess, Countable
-{
-    /* constants */
+        /* methods */
+        public function __construct($config_file, $section = NULL)
+        {
+        }
 
-    /* properties */
-    protected $_config = NULL;
-    protected $_readonly = "";
+        public function __isset($name)
+        {
+        }
 
-    /* methods */
-    public function __construct($config_file, $section = NULL)
-    {
-    }
+        public function get($name = NULL)
+        {
+        }
 
-    public function __isset($name)
-    {
-    }
+        public function set($name, $value)
+        {
+        }
 
-    public function get($name = NULL)
-    {
-    }
+        public function count()
+        {
+        }
 
-    public function set($name, $value)
-    {
-    }
+        public function offsetUnset($name)
+        {
+        }
 
-    public function count()
-    {
-    }
+        public function rewind()
+        {
+        }
 
-    public function offsetUnset($name)
-    {
-    }
+        public function current()
+        {
+        }
 
-    public function rewind()
-    {
-    }
+        public function next()
+        {
+        }
 
-    public function current()
-    {
-    }
+        public function valid()
+        {
+        }
 
-    public function next()
-    {
-    }
+        public function key()
+        {
+        }
 
-    public function valid()
-    {
-    }
+        public function readonly()
+        {
+        }
 
-    public function key()
-    {
-    }
+        public function toArray()
+        {
+        }
 
-    public function readonly()
-    {
-    }
+        public function __set($name, $value)
+        {
+        }
 
-    public function toArray()
-    {
-    }
+        public function __get($name = NULL)
+        {
+        }
 
-    public function __set($name, $value)
-    {
-    }
+        public function offsetGet($name)
+        {
+        }
 
-    public function __get($name = NULL)
-    {
-    }
+        public function offsetExists($name)
+        {
+        }
 
-    public function offsetGet($name)
-    {
+        public function offsetSet($name, $value)
+        {
+        }
     }
 
-    public function offsetExists($name)
+    final class Yaf_View_Simple implements Yaf_View_Interface
     {
-    }
+        /* constants */
 
-    public function offsetSet($name, $value)
-    {
-    }
-}
-
-final class Yaf_View_Simple implements Yaf_View_Interface
-{
-    /* constants */
-
-    /* properties */
-    protected $_tpl_vars = NULL;
-    protected $_tpl_dir = NULL;
-    protected $_options = NULL;
-
-    /* methods */
-    public function __construct($tempalte_dir, array $options = NULL)
-    {
-    }
+        /* properties */
+        protected $_tpl_vars = NULL;
+        protected $_tpl_dir = NULL;
+        protected $_options = NULL;
 
-    public function __isset($name)
-    {
-    }
+        /* methods */
+        public function __construct($tempalte_dir, array $options = NULL)
+        {
+        }
 
-    public function get($name = NULL)
-    {
-        return;
-    }
+        public function __isset($name)
+        {
+        }
 
-    public function assign($name, $value = NULL)
-    {
-    }
+        public function get($name = NULL)
+        {
+            return;
+        }
 
-    public function render($tpl, $tpl_vars = NULL)
-    {
-    }
+        public function assign($name, $value = NULL)
+        {
+        }
+
+        public function render($tpl, $tpl_vars = NULL)
+        {
+        }
 
 //    public function eval($tpl_str, $vars = NULL) {
 //}
 
-public
-function display($tpl, $tpl_vars = NULL)
-{
-}
-
-public
-function assignRef($name, &$value)
-{
-}
-
-public
-function clear($name = NULL)
-{
-}
-
-public
-function setScriptPath($template_dir)
-{
-}
-
-public
-function getScriptPath()
-{
-}
-
-public function __get($name = NULL){}
-
-public function __set($name, $value = NULL){}
-}
-
-class Yaf_Router
-{
-    /* constants */
-
-    /* properties */
-    protected $_routes = NULL;
-    protected $_current = NULL;
-
-    /* methods */
-    public function __construct()
-    {
-    }
+        public
+        function display($tpl, $tpl_vars = NULL)
+        {
+        }
 
-    public function addRoute()
-    {
-    }
+        public
+        function assignRef($name, &$value)
+        {
+        }
 
-    public function addConfig()
-    {
-    }
+        public
+        function clear($name = NULL)
+        {
+        }
 
-    public function route()
-    {
-    }
+        public
+        function setScriptPath($template_dir)
+        {
+        }
 
-    public function getRoute()
-    {
-    }
+        public
+        function getScriptPath()
+        {
+        }
 
-    public function getRoutes()
-    {
+        public function __get($name = NULL)
+        {
+        }
+
+        public function __set($name, $value = NULL)
+        {
+        }
     }
 
-    public function getCurrentRoute()
+    class Yaf_Router
     {
-    }
-}
+        /* constants */
 
-class Yaf_Route_Static extends Yaf_Router
-{
-    /* constants */
+        /* properties */
+        protected $_routes = NULL;
+        protected $_current = NULL;
 
-    /* properties */
+        /* methods */
+        public function __construct()
+        {
+        }
 
-    /* methods */
-    public function match($uri)
-    {
-    }
+        public function addRoute()
+        {
+        }
 
-    public function route($request)
-    {
-    }
+        public function addConfig()
+        {
+        }
 
-    public function __construct()
-    {
-    }
+        public function route()
+        {
+        }
 
-    public function addRoute()
-    {
-    }
+        public function getRoute()
+        {
+        }
 
-    public function addConfig()
-    {
-    }
+        public function getRoutes()
+        {
+        }
 
-    public function getRoute()
-    {
+        public function getCurrentRoute()
+        {
+        }
     }
 
-    public function getRoutes()
+    class Yaf_Route_Static extends Yaf_Router
     {
-    }
+        /* constants */
 
-    public function getCurrentRoute()
-    {
-    }
-}
-
-final class Yaf_Route_Simple implements Yaf_Route_Interface
-{
-    /* constants */
-
-    /* properties */
-    protected $controller = NULL;
-    protected $module = NULL;
-    protected $action = NULL;
-
-    /* methods */
-    public function __construct($module_name, $controller_name, $action_name)
-    {
-    }
+        /* properties */
 
-    public function route($request)
-    {
-    }
-}
+        /* methods */
+        public function match($uri)
+        {
+        }
 
-final class Yaf_Route_Supervar implements Yaf_Route_Interface
-{
-    /* constants */
+        public function route($request)
+        {
+        }
 
-    /* properties */
-    protected $_var_name = NULL;
+        public function __construct()
+        {
+        }
 
-    /* methods */
-    public function __construct($supervar_name)
-    {
-    }
+        public function addRoute()
+        {
+        }
 
-    public function route($request)
-    {
-    }
-}
-
-final class Yaf_Route_Rewrite extends Yaf_Route_Interface implements Yaf_Route_Interface
-{
-    /* constants */
-
-    /* properties */
-    protected $_route = NULL;
-    protected $_default = NULL;
-    protected $_verify = NULL;
-
-    /* methods */
-    public function __construct($match, array $route, array $verify = NULL)
-    {
-    }
+        public function addConfig()
+        {
+        }
 
-    public function route($request)
-    {
-    }
-}
-
-final class Yaf_Route_Regex extends Yaf_Route_Interface implements Yaf_Route_Interface
-{
-    /* constants */
-
-    /* properties */
-    protected $_route = NULL;
-    protected $_default = NULL;
-    protected $_maps = NULL;
-    protected $_verify = NULL;
-
-    /* methods */
-    public function __construct($match, array $route, array $map = NULL, array $verify = NULL)
-    {
+        public function getRoute()
+        {
+        }
+
+        public function getRoutes()
+        {
+        }
+
+        public function getCurrentRoute()
+        {
+        }
     }
 
-    public function route($request)
+    final class Yaf_Route_Simple implements Yaf_Route_Interface
     {
-    }
-}
+        /* constants */
 
-final class Yaf_Route_Map implements Yaf_Route_Interface
-{
-    /* constants */
+        /* properties */
+        protected $controller = NULL;
+        protected $module = NULL;
+        protected $action = NULL;
 
-    /* properties */
-    protected $_ctl_router = "";
-    protected $_delimeter = NULL;
+        /* methods */
+        public function __construct($module_name, $controller_name, $action_name)
+        {
+        }
 
-    /* methods */
-    public function __construct($controller_prefer = NULL, $delimiter = NULL)
-    {
+        public function route($request)
+        {
+        }
     }
 
-    public function route($request)
+    final class Yaf_Route_Supervar implements Yaf_Route_Interface
     {
-    }
-}
+        /* constants */
 
-abstract class Yaf_Plugin_Abstract
-{
-    /* constants */
+        /* properties */
+        protected $_var_name = NULL;
 
-    /* properties */
+        /* methods */
+        public function __construct($supervar_name)
+        {
+        }
 
-    /* methods */
-    public function routerStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
-    {
+        public function route($request)
+        {
+        }
     }
 
-    public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    final class Yaf_Route_Rewrite extends Yaf_Route_Interface implements Yaf_Route_Interface
     {
-    }
+        /* constants */
 
-    public function dispatchLoopStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
-    {
-    }
+        /* properties */
+        protected $_route = NULL;
+        protected $_default = NULL;
+        protected $_verify = NULL;
 
-    public function dispatchLoopShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
-    {
-    }
+        /* methods */
+        public function __construct($match, array $route, array $verify = NULL)
+        {
+        }
 
-    public function preDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
-    {
+        public function route($request)
+        {
+        }
     }
 
-    public function postDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    final class Yaf_Route_Regex extends Yaf_Route_Interface implements Yaf_Route_Interface
     {
+        /* constants */
+
+        /* properties */
+        protected $_route = NULL;
+        protected $_default = NULL;
+        protected $_maps = NULL;
+        protected $_verify = NULL;
+
+        /* methods */
+        public function __construct($match, array $route, array $map = NULL, array $verify = NULL)
+        {
+        }
+
+        public function route($request)
+        {
+        }
     }
 
-    public function preResponse(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    final class Yaf_Route_Map implements Yaf_Route_Interface
     {
-    }
-}
+        /* constants */
 
-final class Yaf_Registry
-{
-    /* constants */
+        /* properties */
+        protected $_ctl_router = "";
+        protected $_delimeter = NULL;
 
-    /* properties */
-    static protected $_instance = NULL;
-    protected $_entries = NULL;
+        /* methods */
+        public function __construct($controller_prefer = NULL, $delimiter = NULL)
+        {
+        }
 
-    /* methods */
-    private function __construct()
-    {
+        public function route($request)
+        {
+        }
     }
 
-    private function __clone()
+    abstract class Yaf_Plugin_Abstract
     {
-    }
+        /* constants */
 
-    /**
-     * @param $name
-     * @return Yaf_Registry
-     */
-    public static function get($name)
-    {
-    }
+        /* properties */
 
-    public static function has($name)
-    {
-    }
+        /* methods */
+        public function routerStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+        {
+        }
 
-    public static function set($name, $value)
-    {
-    }
+        public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+        {
+        }
 
-    public static function del($name)
-    {
-    }
-}
-
-final class Yaf_Session implements Iterator, Traversable, ArrayAccess, Countable
-{
-    /* constants */
-
-    /* properties */
-    static protected $_instance = NULL;
-    protected $_session = NULL;
-    protected $_started = "";
-
-    /* methods */
-    private function __construct()
-    {
-    }
+        public function dispatchLoopStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+        {
+        }
 
-    private function __clone()
-    {
-    }
+        public function dispatchLoopShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+        {
+        }
 
-    private function __sleep()
-    {
-    }
+        public function preDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+        {
+        }
 
-    private function __wakeup()
-    {
-    }
+        public function postDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+        {
+        }
 
-    /**
-     * @return Yaf_Session
-     */
-    public static function getInstance()
-    {
+        public function preResponse(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+        {
+        }
     }
 
-    public function start()
+    final class Yaf_Registry
     {
-    }
+        /* constants */
 
-    public function get($name)
-    {
-    }
+        /* properties */
+        static protected $_instance = NULL;
+        protected $_entries = NULL;
 
-    public function has($name)
-    {
-    }
+        /* methods */
+        private function __construct()
+        {
+        }
 
-    public function set($name, $value)
-    {
-    }
+        private function __clone()
+        {
+        }
 
-    public function del($name)
-    {
-    }
+        /**
+         * @param $name
+         * @return Yaf_Registry
+         */
+        public static function get($name)
+        {
+        }
 
-    public function count()
-    {
-    }
+        public static function has($name)
+        {
+        }
 
-    public function rewind()
-    {
-    }
+        public static function set($name, $value)
+        {
+        }
 
-    public function next()
-    {
+        public static function del($name)
+        {
+        }
     }
 
-    public function current()
+    final class Yaf_Session implements Iterator, Traversable, ArrayAccess, Countable
     {
-    }
+        /* constants */
 
-    public function key()
-    {
-    }
+        /* properties */
+        static protected $_instance = NULL;
+        protected $_session = NULL;
+        protected $_started = "";
 
-    public function valid()
-    {
-    }
+        /* methods */
+        private function __construct()
+        {
+        }
 
-    public function offsetGet($name)
-    {
-    }
+        private function __clone()
+        {
+        }
 
-    public function offsetSet($name, $value)
-    {
-    }
+        private function __sleep()
+        {
+        }
 
-    public function offsetExists($name)
-    {
-    }
+        private function __wakeup()
+        {
+        }
 
-    public function offsetUnset($name)
-    {
-    }
+        /**
+         * @return Yaf_Session
+         */
+        public static function getInstance()
+        {
+        }
 
-    public function __get($name)
-    {
-    }
+        public function start()
+        {
+        }
 
-    public function __isset($name)
-    {
-    }
+        public function get($name)
+        {
+        }
 
-    public function __set($name, $value)
-    {
-    }
+        public function has($name)
+        {
+        }
 
-    public function __unset($name)
-    {
-    }
-}
-
-class Yaf_Exception extends Exception
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
-    {
-    }
+        public function set($name, $value)
+        {
+        }
 
-    public function getPrevious()
-    {
-    }
+        public function del($name)
+        {
+        }
 
-    final private function __clone()
-    {
-    }
+        public function count()
+        {
+        }
 
-    final public function getMessage()
-    {
-    }
+        public function rewind()
+        {
+        }
 
-    final public function getCode()
-    {
-    }
+        public function next()
+        {
+        }
 
-    final public function getFile()
-    {
-    }
+        public function current()
+        {
+        }
 
-    final public function getLine()
-    {
-    }
+        public function key()
+        {
+        }
 
-    final public function getTrace()
-    {
-    }
+        public function valid()
+        {
+        }
 
-    final public function getTraceAsString()
-    {
+        public function offsetGet($name)
+        {
+        }
+
+        public function offsetSet($name, $value)
+        {
+        }
+
+        public function offsetExists($name)
+        {
+        }
+
+        public function offsetUnset($name)
+        {
+        }
+
+        public function __get($name)
+        {
+        }
+
+        public function __isset($name)
+        {
+        }
+
+        public function __set($name, $value)
+        {
+        }
+
+        public function __unset($name)
+        {
+        }
     }
 
-    public function __toString()
+    class Yaf_Exception extends Exception
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
+
+        public function getPrevious()
+        {
+        }
+
+        final private function __clone()
+        {
+        }
+
+        final public function getMessage()
+        {
+        }
+
+        final public function getCode()
+        {
+        }
+
+        final public function getFile()
+        {
+        }
+
+        final public function getLine()
+        {
+        }
+
+        final public function getTrace()
+        {
+        }
+
+        final public function getTraceAsString()
+        {
+        }
+
+        public function __toString()
+        {
+        }
     }
-}
-
-class Yaf_Exception_StartupError extends Yaf_Exception
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_StartupError extends Yaf_Exception
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
-
-class Yaf_Exception_RouterFailed extends Yaf_Exception
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_RouterFailed extends Yaf_Exception
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
-
-class Yaf_Exception_DispatchFailed extends Yaf_Exception
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_DispatchFailed extends Yaf_Exception
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
-
-class Yaf_Exception_LoadFailed extends Yaf_Exception
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_LoadFailed extends Yaf_Exception
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
-
-class Yaf_Exception_LoadFailed_Module extends Yaf_Exception_LoadFailed
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_LoadFailed_Module extends Yaf_Exception_LoadFailed
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
-
-class Yaf_Exception_LoadFailed_Controller extends Yaf_Exception_LoadFailed
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_LoadFailed_Controller extends Yaf_Exception_LoadFailed
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
-
-class Yaf_Exception_LoadFailed_Action extends Yaf_Exception_LoadFailed
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_LoadFailed_Action extends Yaf_Exception_LoadFailed
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
-
-class Yaf_Exception_LoadFailed_View extends Yaf_Exception_LoadFailed
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_LoadFailed_View extends Yaf_Exception_LoadFailed
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
-
-class Yaf_Exception_TypeError extends Yaf_Exception
-{
-    /* constants */
-
-    /* properties */
-    protected $message = NULL;
-    protected $code = "0";
-    protected $file = NULL;
-    protected $line = NULL;
-    protected $previous = NULL;
-
-    /* methods */
-    public function __construct()
+
+    class Yaf_Exception_TypeError extends Yaf_Exception
     {
+        /* constants */
+
+        /* properties */
+        protected $message = NULL;
+        protected $code = "0";
+        protected $file = NULL;
+        protected $line = NULL;
+        protected $previous = NULL;
+
+        /* methods */
+        public function __construct()
+        {
+        }
     }
-}
 
